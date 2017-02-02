@@ -25,6 +25,7 @@ const ATTRIBUTELIST: Array<any> = [
 ];
 const SYSTEMJSLINE: Array<any> = [
     `map: {`,
+    ` 'numeral': 'npm:numeral/numeral.js',`,
     ` 'gos-textbox': 'gos:textbox/{version}',`,
     ` 'gos-label': 'gos:label/{version}',`,
     ` 'gos-service': 'gos:service/{version}',`,
