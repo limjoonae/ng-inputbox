@@ -1,0 +1,211 @@
+<ul class="nav nav-tabs" role="tablist">
+	<li class="nav-item"><a class="nav-link active" href="#Overview"
+		role="tab" data-toggle="tab">Overview</a></li>
+	<li class="nav-item"><a class="nav-link" href="#Document" role="tab"
+		data-toggle="tab">Document</a></li>
+	<li class="nav-item"><a class="nav-link" href="#Example" role="tab"
+		data-toggle="tab">Example</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+	<div role="tabpanel" class="tab-pane fade in active" id="Overview">
+		<div class="jumbotron">
+			<h2>Component {{componentTag}}</h2><br>
+			<div class="row">
+				<div class="col-md-6">
+					<strong>Description</strong>
+					<p>{{componentDescription}}</p>
+				</div>
+				<div class="col-md-6">
+					<p><strong>Version: {{version}}</strong>
+					</p>
+					<p><strong>Release Date: {{releaseDate}}</strong>
+					</p>
+					<p><strong></strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+  	<div role="tabpanel" class="tab-pane fade" id="Document">
+		<div class="jumbotron">
+			<h2>Syntax</h2>
+			<!--<small>[  ] = optional attribute</small>-->
+			<code>{{prefixSyntax}}<em>{{attrSyntax}}</em>{{suffixSyntax}}</code>
+		</div>
+		<div class="jumbotron">
+			<h2>Attributes</h2>
+			<small>* = require</small>
+			<table class="table">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Attribute</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let attribute of attributeList">
+						<th scope="row">{{attribute.require}}</th>
+						<td>{{attribute.name}}</td>
+						<td><em>{{attribute.type}}</em></td>
+						<td>{{attribute.description}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="jumbotron">
+			<h2>Types</h2>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{typeDescription}}</p>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let type of typeList">
+						<td>{{type.type}}</td>
+						<td>{{type.description}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="jumbotron">
+			<h2>Number Format</h2>
+			<p>เลือกใช้ format ได้จาก <strong><em><a href="http://numeraljs.com/" target="_blank">Numeral.js</a></em></strong> (อ้างอิงเวอร์ชั่น <strong>{{numeralJSVersion}})</strong></p>
+		</div>
+		<div class="jumbotron">
+			<h2>Getting Started</h2>
+			<p><li>systemjs.config.js</li></p>
+			<pre><code *ngFor="let line of systemjsLine">{{line}}<br></code></pre><br>
+			<p><li>app.module.ts</li></p>
+			<pre><code *ngFor="let line of appModuleLine">{{line}}<br></code></pre>
+		</div>
+	</div>
+	<div role="tabpanel" class="tab-pane fade" id="Example">
+		<!--<div class="container-fluid">-->
+		<div class="jumbotron">
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<gos-textbox defaultValue="Peter Pan" type="text" label="First Name" require="true" id="textbox_1" colorTheme="success"></gos-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_1">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_1" aria-expanded="false" aria-controls="collapse_ex_1">
+							Code Example#1
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_1" class="collapse" role="tabpanel" aria-labelledby="ex_1">
+						<div class="jumbotron">
+							<code>&lt;gos-textbox defaultValue="Peter Pan" type="text" label="First Name" require="true" id="textbox_1" colorTheme="success"&gt;&lt;/gos-textbox&gt;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<gos-textbox maxlength="6" type="password" label="Password Box" id="password_box" colorTheme="info" name="password_box"></gos-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_2">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_2" aria-expanded="false" aria-controls="collapse_ex_2">
+							Code Example#2
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_2" class="collapse" role="tabpanel" aria-labelledby="ex_2">
+						<div class="jumbotron">
+							<code>&lt;gos-textbox maxlength="6" type="password" label="Password Box" id="password_box" colorTheme="info"&gt;&lt;/gos-textbox&gt;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<gos-textbox maxlength="6" defaultValue="1111" type="integer" label="Integer Box" id="integer_box" colorTheme="warning" placeholder="0-9"></gos-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_3">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_3" aria-expanded="false" aria-controls="collapse_ex_3">
+							Code Example#3
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_3" class="collapse" role="tabpanel" aria-labelledby="ex_3">
+						<div class="jumbotron"  style="background-color: #ffffff;">
+							<code>&lt;gos-textbox maxlength="6" defaultValue="1111" type="number" label="Number Box" id="integer_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/gos-textbox&gt;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<gos-textbox defaultValue="1,111.22" type="number" label="Number Box" id="number_box" colorTheme="warning" placeholder="0-9"></gos-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_4">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_4" aria-expanded="false" aria-controls="collapse_ex_4">
+							Code Example#4
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_4" class="collapse" role="tabpanel" aria-labelledby="ex_4">
+						<div class="jumbotron"  style="background-color: #ffffff;">
+							<code>&lt;gos-textbox defaultValue="1,111.22" type="number" label="Number Box" id="number_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/gos-textbox&gt;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<gos-textbox type="email" label="Email Box" id="email_1" placeholder="example@host.com" warningText=""></gos-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_5">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_5" aria-expanded="false" aria-controls="collapse_ex_5">
+							Code Example#5
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_5" class="collapse" role="tabpanel" aria-labelledby="ex_5">
+						<div class="jumbotron"  style="background-color: #ffffff;">
+							<code>&lt;gos-textbox type="email" label="Email Box" id="email_1" placeholder="example@host.com" warningText=""&gt;&lt;/gos-textbox&gt;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<gos-textbox type="password" label="Custom Validate Password" id="custom_validate" [customRegExp]="regExp"></gos-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_6">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_6" aria-expanded="false" aria-controls="collapse_ex_6">
+							Code Example#6
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_6" class="collapse" role="tabpanel" aria-labelledby="ex_6">
+						<div class="jumbotron"  style="background-color: #ffffff;">
+							<code>&lt;gos-textbox type="password" label="Custom Validate" id="custom_validate" [customRegExp]="regExp"&gt;&lt;/gos-textbox&gt;</code>
+							<p></p>
+							<p></p>
+							<p>component.ts</p>
+							<code>regExp = /([A-Z])\w+/g;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
