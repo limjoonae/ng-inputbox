@@ -26,6 +26,6 @@
 		<small id="{{id}}_warningMsg" class="form-text text-muted"><font color="red">{{warningMsgReturn}}</font></small>
 	</div>
 	<div *ngIf="type == 'hidden'" class="textbox-with-msg">
-		<input [id]="id" type="hidden" [value]="defaultText">
+		<input [id]="id" [name]="name" type="hidden" [value]="defaultText">
 	</div>
 <!--</div>-->
