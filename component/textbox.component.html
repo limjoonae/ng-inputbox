@@ -6,8 +6,8 @@
 		<small id="{{id}}_warningMsg" class="form-text text-muted"><font color="red">{{warningMsgReturn}}</font></small>
 	</div>
 	<div *ngIf="type == 'password'" class="textbox-with-msg">
-		<input #input class="form-control {{colorClass}}" [id]="id" [name]="name" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
-			type="password" [customMaxlength]="maxlength" (blur)="customValidate(input.value)">
+		<input #input class="form-control {{colorClass}}" type="password" [id]="id" [name]="name" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+			[value]="defaultText" [customMaxlength]="maxlength" (blur)="customValidate(input.value)">
 		<small id="{{id}}_warningMsg" class="form-text text-muted"><font color="red">{{warningMsgReturn}}</font></small>
 	</div>
 	<div *ngIf="type == 'integer'" class="textbox-with-msg">
