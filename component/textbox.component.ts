@@ -32,7 +32,7 @@ export class TextboxComponent implements OnInit {
   private warningMsgReturn: string;
   private warningMsg: string;
   private space = ' ';
-  @Output() valueOut = new EventEmitter<string>();
+  @Output() valueOut = new EventEmitter<any>();
 
   constructor(
     private _bootstrapClassService: BootstrapClassService,
