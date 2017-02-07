@@ -84,11 +84,11 @@ const APPMODULELINE: Array<any> = [
 
 @Component({
   moduleId: module.id,
-  selector: 'textbox-page',
-  templateUrl: './textbox.page.html',
-  styleUrls: ['./textbox.page.css']
+  selector: 'textbox-document',
+  templateUrl: './textbox.document.html',
+  styleUrls: ['./textbox.document.css']
 })
-export class TextboxPage implements OnInit {
+export class TextboxDocument implements OnInit {
 
   private componentTag: string = '<gos-textbox>';
   private componentDescription: string = `Text box ใช้ในการรับค่าและแสดงผลข้อมูลตามประเภทต่างๆ`;

@@ -79,8 +79,8 @@ var APPMODULELINE = [
     "   ..........",
     "],",
 ];
-var TextboxPage = (function () {
-    function TextboxPage() {
+var TextboxDocument = (function () {
+    function TextboxDocument() {
         this.componentTag = '<gos-textbox>';
         this.componentDescription = "Text box \u0E43\u0E0A\u0E49\u0E43\u0E19\u0E01\u0E32\u0E23\u0E23\u0E31\u0E1A\u0E04\u0E48\u0E32\u0E41\u0E25\u0E30\u0E41\u0E2A\u0E14\u0E07\u0E1C\u0E25\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E15\u0E32\u0E21\u0E1B\u0E23\u0E30\u0E40\u0E20\u0E17\u0E15\u0E48\u0E32\u0E07\u0E46";
         this.version = '1.0';
@@ -98,18 +98,18 @@ var TextboxPage = (function () {
         this.numeralJSVersion = '2.0.4';
         this.regExp = /([A-Z])\w+/g;
     }
-    TextboxPage.prototype.ngOnInit = function () {
+    TextboxDocument.prototype.ngOnInit = function () {
     };
-    TextboxPage = __decorate([
+    TextboxDocument = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'textbox-page',
-            templateUrl: './textbox.page.html',
-            styleUrls: ['./textbox.page.css']
+            selector: 'textbox-document',
+            templateUrl: './textbox.document.html',
+            styleUrls: ['./textbox.document.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], TextboxPage);
-    return TextboxPage;
+    ], TextboxDocument);
+    return TextboxDocument;
 }());
-exports.TextboxPage = TextboxPage;
+exports.TextboxDocument = TextboxDocument;
 //# sourceMappingURL=textbox.document.js.map

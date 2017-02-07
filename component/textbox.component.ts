@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BootstrapClassService, CommonService } from 'gos-service';
 import { ValidationService } from './validation.service';
 import { TransformService } from './transform.service';
@@ -32,20 +32,22 @@ export class TextboxComponent implements OnInit {
   private warningMsgReturn: string;
   private warningMsg: string;
   private space = ' ';
+  @Output() valueOut = new EventEmitter<string>();
 
   constructor(
     private _bootstrapClassService: BootstrapClassService,
               private _commonService: CommonService,
               private _validationService: ValidationService,
-              private _transformStringNumber: TransformService) { }
+              private _transformStringNumber: TransformService,) { }
 
   ngOnInit() {
     this.colorClass = this.setStyleClass(this.colorTheme, this.classPrefix);
     this.placeholder = this._commonService.isNull(this.placeholder)? '' : this.placeholder;
     this.defaultText = this._commonService.isNull(this.defaultValue)? '' : this.defaultValue;
     this.warningMsg = this._commonService.isNull(this.warningText)? 'please input valid '.concat(this.type) : this.warningText;
+    this.valueOut.emit(this.defaultText);
   }
-  
+
   clearFormat(value: string): void {
     let stringToClear = /,/g;
     this.defaultText = this._transformStringNumber.toClearFormat(value, stringToClear);
@@ -60,17 +62,19 @@ export class TextboxComponent implements OnInit {
   }
 
   setStyleClass(styleClass: string, prefix:string): string {
-      return this._commonService.isNull(styleClass)? '' : prefix.concat(this.space) + this._bootstrapClassService.setStyleClass(styleClass, prefix);
+    return this._commonService.isNull(styleClass)? '' : prefix.concat(this.space) + this._bootstrapClassService.setStyleClass(styleClass, prefix);
   }
 
   customValidate(value: string): void {
     let isValid = this._commonService.isNull(this.customRegExp)? true : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
     this.warningMsgReturn = isValid? '' : this.warningMsg;
+    this.valueOut.emit(value);
   }
 
   validateEmail(value: string): void { 
     let isValid = this._commonService.isNull(this.customRegExp)? this._validationService.validateEmail(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
     this.warningMsgReturn = isValid? '' : this.warningMsg;
+    this.valueOut.emit(value);
   }
 
   validateInteger(value: string): void {
@@ -81,6 +85,7 @@ export class TextboxComponent implements OnInit {
     } else { 
       this.warningMsgReturn = this.warningMsg;
     }
+    this.valueOut.emit(value);
   }
 
   validateNumber(value: string): void {
@@ -91,6 +96,7 @@ export class TextboxComponent implements OnInit {
     } else { 
       this.warningMsgReturn = this.warningMsg;
     }
+    this.valueOut.emit(value);
   }
 
 }

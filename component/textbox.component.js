@@ -20,12 +20,14 @@ var TextboxComponent = (function () {
         this._transformStringNumber = _transformStringNumber;
         this.classPrefix = 'alert';
         this.space = ' ';
+        this.valueOut = new core_1.EventEmitter();
     }
     TextboxComponent.prototype.ngOnInit = function () {
         this.colorClass = this.setStyleClass(this.colorTheme, this.classPrefix);
         this.placeholder = this._commonService.isNull(this.placeholder) ? '' : this.placeholder;
         this.defaultText = this._commonService.isNull(this.defaultValue) ? '' : this.defaultValue;
         this.warningMsg = this._commonService.isNull(this.warningText) ? 'please input valid '.concat(this.type) : this.warningText;
+        this.valueOut.emit(this.defaultText);
     };
     TextboxComponent.prototype.clearFormat = function (value) {
         var stringToClear = /,/g;
@@ -43,10 +45,12 @@ var TextboxComponent = (function () {
     TextboxComponent.prototype.customValidate = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? true : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
         this.warningMsgReturn = isValid ? '' : this.warningMsg;
+        this.valueOut.emit(value);
     };
     TextboxComponent.prototype.validateEmail = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateEmail(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
         this.warningMsgReturn = isValid ? '' : this.warningMsg;
+        this.valueOut.emit(value);
     };
     TextboxComponent.prototype.validateInteger = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateInteger(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
@@ -57,6 +61,7 @@ var TextboxComponent = (function () {
         else {
             this.warningMsgReturn = this.warningMsg;
         }
+        this.valueOut.emit(value);
     };
     TextboxComponent.prototype.validateNumber = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
@@ -67,6 +72,7 @@ var TextboxComponent = (function () {
         else {
             this.warningMsgReturn = this.warningMsg;
         }
+        this.valueOut.emit(value);
     };
     __decorate([
         core_1.Input(), 
@@ -124,6 +130,10 @@ var TextboxComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', RegExp)
     ], TextboxComponent.prototype, "customRegExp", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], TextboxComponent.prototype, "valueOut", void 0);
     TextboxComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
