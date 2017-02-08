@@ -110,10 +110,17 @@ export class TextboxDocument implements OnInit {
   private gettingStartDetail = 'app.module.ts - ทำการ import และกำหนดค่าเพิ่มเติมใน declarations';
   private numeralJSVersion = '2.0.4';
   private regExp = /([A-Z])\w+/g;
+
+  text: string;
+  paramText = '{{text}}';
   
   constructor() { }
 
   ngOnInit() {
+  }
+
+  textOut(text: any) {
+    text ? this.text = text : this.text = '';
   }
 
 }

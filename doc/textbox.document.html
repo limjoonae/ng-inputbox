@@ -109,7 +109,7 @@
 		<div class="jumbotron">
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox defaultValue="Peter Pan" type="text" label="First Name" require="true" id="textbox_1" colorTheme="success"></gos-textbox>
+					<gos-textbox defaultValue="John" type="text" label="First Name" require="true" id="textbox_1" colorTheme="success"></gos-textbox>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_1">
@@ -158,7 +158,7 @@
 						</h5>
 					</div>
 					<div id="collapse_ex_3" class="collapse" role="tabpanel" aria-labelledby="ex_3">
-						<div class="jumbotron"  style="background-color: #ffffff;">
+						<div class="jumbotron">
 							<code>&lt;gos-textbox maxlength="6" defaultValue="1111" type="number" label="Number Box" id="integer_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/gos-textbox&gt;</code>
 						</div>
 					</div>
@@ -177,7 +177,7 @@
 						</h5>
 					</div>
 					<div id="collapse_ex_4" class="collapse" role="tabpanel" aria-labelledby="ex_4">
-						<div class="jumbotron"  style="background-color: #ffffff;">
+						<div class="jumbotron">
 							<code>&lt;gos-textbox defaultValue="1,111.22" type="number" label="Number Box" id="number_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/gos-textbox&gt;</code>
 						</div>
 					</div>
@@ -196,7 +196,7 @@
 						</h5>
 					</div>
 					<div id="collapse_ex_5" class="collapse" role="tabpanel" aria-labelledby="ex_5">
-						<div class="jumbotron"  style="background-color: #ffffff;">
+						<div class="jumbotron">
 							<code>&lt;gos-textbox type="email" label="Email Box" id="email_1" placeholder="example@host.com" warningText=""&gt;&lt;/gos-textbox&gt;</code>
 						</div>
 					</div>
@@ -215,12 +215,39 @@
 						</h5>
 					</div>
 					<div id="collapse_ex_6" class="collapse" role="tabpanel" aria-labelledby="ex_6">
-						<div class="jumbotron"  style="background-color: #ffffff;">
+						<div class="jumbotron">
 							<code>&lt;gos-textbox type="password" label="Custom Validate" id="custom_validate" [customRegExp]="regExp"&gt;&lt;/gos-textbox&gt;</code>
 							<p></p>
 							<p></p>
 							<p>component.ts</p>
-							<code>regExp = /([A-Z])\w+/g;</code>
+							<pre><code>regExp = /([A-Z])\w+/g;</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<gos-textbox (valueOut)="textOut($event)" defaultValue="John" type="text" label="Get value from textbox" require="true" id="textbox_2" colorTheme="danger"></gos-textbox>valueOut: {{text}}
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_7">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_7" aria-expanded="false" aria-controls="collapse_ex_7">
+							Code Example#7
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_7" class="collapse" role="tabpanel" aria-labelledby="ex_7">
+						<div class="jumbotron">
+							<code>&lt;gos-textbox (valueOut)="textOut($event)" defaultValue="John" type="text" label="Get value from textbox" require="true" id="textbox_2" colorTheme="danger"&gt;&lt;/gos-textbox&gt;</code><br>
+							<code>valueOut: {{paramText}}</code>
+							<p></p>
+							<p></p>
+							<p>component.ts</p>
+							<pre><code>text: string;
+textOut(text: any) &#123;
+	text ? this.text = text : this.text = '';
+&#125;</code></pre>
 						</div>
 					</div>
 				</div>

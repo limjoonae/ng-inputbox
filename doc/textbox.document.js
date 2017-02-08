@@ -99,8 +99,12 @@ var TextboxDocument = (function () {
         this.gettingStartDetail = 'app.module.ts - ทำการ import และกำหนดค่าเพิ่มเติมใน declarations';
         this.numeralJSVersion = '2.0.4';
         this.regExp = /([A-Z])\w+/g;
+        this.paramText = '{{text}}';
     }
     TextboxDocument.prototype.ngOnInit = function () {
+    };
+    TextboxDocument.prototype.textOut = function (text) {
+        text ? this.text = text : this.text = '';
     };
     TextboxDocument = __decorate([
         core_1.Component({
