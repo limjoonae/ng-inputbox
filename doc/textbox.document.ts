@@ -65,19 +65,21 @@ const TYPELIST: Array<any> = [
     { type: 'hidden', description: `รับข้อมูลตัวเลข ตัวอักษร และอักขระพิเศษ`},
 ];
 
+const EVENTLIST: Array<any> = [
+    { name: `(valueOut)` ,parameter: 'event: function_name($event)', description: `ใช้ในการนำค่าจาก textbox ออกมาใช้`},
+];
+
 const APPMODULELINE: Array<any> = [
-    `import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective } from 'gos-directive';`,
-    `import { LabelComponent } from 'gos-label';`,
     `import { textboxComponent } from 'gos-textbox';`,
+    `import { LabelComponent } from 'gos-label';`,
+    `import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective } from 'gos-directive';`,
     ``,
     `@NgModule({`,
     `   declarations: [`,
     `   ..........`,
-    `   CustomDisabledDirective,`,
-    `   CustomReadonlyDirective,`,
-    `   CustomMaxlengthDirective,`,
-    `   LabelComponent,`,
     `   textboxComponent,`,
+    `   LabelComponent,`,
+    `   CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective,`,
     `   ..........`,
     `],`,
 ];
@@ -104,6 +106,7 @@ export class TextboxDocument implements OnInit {
   private typeList = TYPELIST;
   private typeDescription = 'รายละเอียดของ text box ใน type ต่างๆดังต่อไปนี้';
   private numberFormatDescription = 'รูปแบบการแสดงผลข้อมูล text box type="number"';
+  private eventList = EVENTLIST;
   private gettingStartDetail = 'app.module.ts - ทำการ import และกำหนดค่าเพิ่มเติมใน declarations';
   private numeralJSVersion = '2.0.4';
   private regExp = /([A-Z])\w+/g;

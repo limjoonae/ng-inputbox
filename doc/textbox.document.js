@@ -63,19 +63,20 @@ var TYPELIST = [
     { type: 'email', description: "\u0E23\u0E31\u0E1A\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25 format email \n        \u0E15\u0E31\u0E27\u0E2D\u0E22\u0E48\u0E32\u0E07: example@email.com, example_2@domain.co.uk" },
     { type: 'hidden', description: "\u0E23\u0E31\u0E1A\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02 \u0E15\u0E31\u0E27\u0E2D\u0E31\u0E01\u0E29\u0E23 \u0E41\u0E25\u0E30\u0E2D\u0E31\u0E01\u0E02\u0E23\u0E30\u0E1E\u0E34\u0E40\u0E28\u0E29" },
 ];
+var EVENTLIST = [
+    { name: "(valueOut)", parameter: 'event: function_name($event)', description: "\u0E43\u0E0A\u0E49\u0E43\u0E19\u0E01\u0E32\u0E23\u0E19\u0E33\u0E04\u0E48\u0E32\u0E08\u0E32\u0E01 textbox \u0E2D\u0E2D\u0E01\u0E21\u0E32\u0E43\u0E0A\u0E49" },
+];
 var APPMODULELINE = [
-    "import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective } from 'gos-directive';",
-    "import { LabelComponent } from 'gos-label';",
     "import { textboxComponent } from 'gos-textbox';",
+    "import { LabelComponent } from 'gos-label';",
+    "import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective } from 'gos-directive';",
     "",
     "@NgModule({",
     "   declarations: [",
     "   ..........",
-    "   CustomDisabledDirective,",
-    "   CustomReadonlyDirective,",
-    "   CustomMaxlengthDirective,",
-    "   LabelComponent,",
     "   textboxComponent,",
+    "   LabelComponent,",
+    "   CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective,",
     "   ..........",
     "],",
 ];
@@ -94,6 +95,7 @@ var TextboxDocument = (function () {
         this.typeList = TYPELIST;
         this.typeDescription = 'รายละเอียดของ text box ใน type ต่างๆดังต่อไปนี้';
         this.numberFormatDescription = 'รูปแบบการแสดงผลข้อมูล text box type="number"';
+        this.eventList = EVENTLIST;
         this.gettingStartDetail = 'app.module.ts - ทำการ import และกำหนดค่าเพิ่มเติมใน declarations';
         this.numeralJSVersion = '2.0.4';
         this.regExp = /([A-Z])\w+/g;

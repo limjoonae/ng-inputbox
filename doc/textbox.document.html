@@ -78,6 +78,25 @@
 			<p>เลือกใช้ format ได้จาก <strong><em><a href="http://numeraljs.com/" target="_blank">Numeral.js</a></em></strong> (อ้างอิงเวอร์ชั่น <strong>{{numeralJSVersion}})</strong></p>
 		</div>
 		<div class="jumbotron">
+			<h2>Event</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Parameter</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let event of eventList">
+						<td>{{event.name}}</td>
+						<td><em>{{event.parameter}}</em></td>
+						<td>{{event.description}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="jumbotron">
 			<h2>Getting Started</h2>
 			<p><li>systemjs.config.js</li></p>
 			<pre><code *ngFor="let line of systemjsLine">{{line}}<br></code></pre><br>
