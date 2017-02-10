@@ -18,20 +18,36 @@ var TextboxComponent = (function () {
         this._commonService = _commonService;
         this._validationService = _validationService;
         this._transformStringNumber = _transformStringNumber;
+        this.defaultValueChange = new core_1.EventEmitter();
         this.classPrefix = 'alert';
         this.space = ' ';
-        this.valueOut = new core_1.EventEmitter();
     }
     TextboxComponent.prototype.ngOnInit = function () {
         this.colorClass = this.setStyleClass(this.colorTheme, this.classPrefix);
         this.placeholder = this._commonService.isNull(this.placeholder) ? '' : this.placeholder;
-        this.defaultText = this._commonService.isNull(this.defaultValue) ? '' : this.defaultValue;
+        this.defaultValueChange.emit(this.defaultValue);
+        this.defaultValue = this.returnDefaultValueOnInit(this.defaultValue);
         this.warningMsg = this._commonService.isNull(this.warningText) ? 'please input valid '.concat(this.type) : this.warningText;
-        this.valueOut.emit(this.defaultText);
+    };
+    TextboxComponent.prototype.returnDefaultValueOnInit = function (value) {
+        if (this._commonService.isNull(this.defaultValue)) {
+            value = '';
+        }
+        else if (this.type == 'integer') {
+            value = this.getIntegerFormat(this.defaultValue);
+        }
+        else if (this.type == 'number') {
+            value = this.getNumberFormat(this.defaultValue);
+        }
+        else {
+            value = this.defaultValue;
+        }
+        return value;
     };
     TextboxComponent.prototype.clearFormat = function (value) {
         var stringToClear = /,/g;
-        this.defaultText = this._transformStringNumber.toClearFormat(value, stringToClear);
+        this.defaultValue = this._transformStringNumber.toClearFormat(value, stringToClear);
+        this.defaultValueChange.emit(this.defaultValue);
     };
     TextboxComponent.prototype.getIntegerFormat = function (value) {
         return this._transformStringNumber.toIntegerFormat(value);
@@ -45,34 +61,34 @@ var TextboxComponent = (function () {
     TextboxComponent.prototype.customValidate = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? true : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
         this.warningMsgReturn = isValid ? '' : this.warningMsg;
-        this.valueOut.emit(value);
+        this.defaultValueChange.emit(value);
     };
     TextboxComponent.prototype.validateEmail = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateEmail(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
         this.warningMsgReturn = isValid ? '' : this.warningMsg;
-        this.valueOut.emit(value);
+        this.defaultValueChange.emit(value);
     };
     TextboxComponent.prototype.validateInteger = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateInteger(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
+        this.defaultValueChange.emit(value);
         if (isValid) {
             this.warningMsgReturn = '';
-            this.defaultText = this.getIntegerFormat(value);
+            this.defaultValue = this.getIntegerFormat(value);
         }
         else {
             this.warningMsgReturn = this.warningMsg;
         }
-        this.valueOut.emit(value);
     };
     TextboxComponent.prototype.validateNumber = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
+        this.defaultValueChange.emit(value);
         if (isValid) {
             this.warningMsgReturn = '';
-            this.defaultText = this.getNumberFormat(value);
+            this.defaultValue = this.getNumberFormat(value);
         }
         else {
             this.warningMsgReturn = this.warningMsg;
         }
-        this.valueOut.emit(value);
     };
     __decorate([
         core_1.Input(), 
@@ -108,8 +124,12 @@ var TextboxComponent = (function () {
     ], TextboxComponent.prototype, "maxlength", void 0);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', String)
+        __metadata('design:type', Object)
     ], TextboxComponent.prototype, "defaultValue", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], TextboxComponent.prototype, "defaultValueChange", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
@@ -130,10 +150,6 @@ var TextboxComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', RegExp)
     ], TextboxComponent.prototype, "customRegExp", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], TextboxComponent.prototype, "valueOut", void 0);
     TextboxComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

@@ -8,7 +8,7 @@ import { TransformService } from './transform.service';
   selector: 'gos-textbox',
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.css'],
-  providers: [ BootstrapClassService, CommonService, ValidationService, TransformService]
+  providers: [BootstrapClassService, CommonService, ValidationService, TransformService]
 })
 export class TextboxComponent implements OnInit {
 
@@ -20,39 +20,52 @@ export class TextboxComponent implements OnInit {
   @Input() disable: string;
   @Input() readonly: string;
   @Input() maxlength: string;
-  @Input() defaultValue: string;
+  @Input() defaultValue: any;
+  @Output() defaultValueChange = new EventEmitter<string>();
   @Input() placeholder: string;
   @Input() colorTheme: string;
   @Input() warningText: string;
   @Input() numberFormat: string;
   @Input() customRegExp: RegExp;
   private classPrefix = 'alert';
-  private defaultText: string;
   private colorClass: string;
   private warningMsgReturn: string;
   private warningMsg: string;
   private space = ' ';
-  @Output() valueOut = new EventEmitter<any>();
 
   constructor(
     private _bootstrapClassService: BootstrapClassService,
-              private _commonService: CommonService,
-              private _validationService: ValidationService,
-              private _transformStringNumber: TransformService,) { }
+    private _commonService: CommonService,
+    private _validationService: ValidationService,
+    private _transformStringNumber: TransformService, ) { }
 
   ngOnInit() {
     this.colorClass = this.setStyleClass(this.colorTheme, this.classPrefix);
-    this.placeholder = this._commonService.isNull(this.placeholder)? '' : this.placeholder;
-    this.defaultText = this._commonService.isNull(this.defaultValue)? '' : this.defaultValue;
-    this.warningMsg = this._commonService.isNull(this.warningText)? 'please input valid '.concat(this.type) : this.warningText;
-    this.valueOut.emit(this.defaultText);
+    this.placeholder = this._commonService.isNull(this.placeholder) ? '' : this.placeholder;
+    this.defaultValueChange.emit(this.defaultValue);
+    this.defaultValue = this.returnDefaultValueOnInit(this.defaultValue);
+    this.warningMsg = this._commonService.isNull(this.warningText) ? 'please input valid '.concat(this.type) : this.warningText;
+  }
+
+  returnDefaultValueOnInit(value: any): any {
+    if (this._commonService.isNull(this.defaultValue)) {
+      value = '';
+    } else if (this.type == 'integer') {
+      value = this.getIntegerFormat(this.defaultValue);
+    } else if (this.type == 'number') {
+      value = this.getNumberFormat(this.defaultValue);
+    } else {
+      value = this.defaultValue;
+    }
+    return value
   }
 
   clearFormat(value: string): void {
     let stringToClear = /,/g;
-    this.defaultText = this._transformStringNumber.toClearFormat(value, stringToClear);
+    this.defaultValue = this._transformStringNumber.toClearFormat(value, stringToClear);
+    this.defaultValueChange.emit(this.defaultValue);
   }
-  
+
   getIntegerFormat(value: string): string {
     return this._transformStringNumber.toIntegerFormat(value);
   }
@@ -61,42 +74,42 @@ export class TextboxComponent implements OnInit {
     return this._transformStringNumber.toNumberFormat(value, this.numberFormat);
   }
 
-  setStyleClass(styleClass: string, prefix:string): string {
-    return this._commonService.isNull(styleClass)? '' : prefix.concat(this.space) + this._bootstrapClassService.setStyleClass(styleClass, prefix);
+  setStyleClass(styleClass: string, prefix: string): string {
+    return this._commonService.isNull(styleClass) ? '' : prefix.concat(this.space) + this._bootstrapClassService.setStyleClass(styleClass, prefix);
   }
 
   customValidate(value: string): void {
-    let isValid = this._commonService.isNull(this.customRegExp)? true : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
-    this.warningMsgReturn = isValid? '' : this.warningMsg;
-    this.valueOut.emit(value);
+    let isValid = this._commonService.isNull(this.customRegExp) ? true : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
+    this.warningMsgReturn = isValid ? '' : this.warningMsg;
+    this.defaultValueChange.emit(value);
   }
 
-  validateEmail(value: string): void { 
-    let isValid = this._commonService.isNull(this.customRegExp)? this._validationService.validateEmail(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
-    this.warningMsgReturn = isValid? '' : this.warningMsg;
-    this.valueOut.emit(value);
+  validateEmail(value: string): void {
+    let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateEmail(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
+    this.warningMsgReturn = isValid ? '' : this.warningMsg;
+    this.defaultValueChange.emit(value);
   }
 
   validateInteger(value: string): void {
-    let isValid = this._commonService.isNull(this.customRegExp)? this._validationService.validateInteger(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
-    if(isValid){
+    let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateInteger(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
+    this.defaultValueChange.emit(value);
+    if (isValid) {
       this.warningMsgReturn = '';
-      this.defaultText = this.getIntegerFormat(value);
-    } else { 
+      this.defaultValue = this.getIntegerFormat(value);
+    } else {
       this.warningMsgReturn = this.warningMsg;
     }
-    this.valueOut.emit(value);
   }
 
   validateNumber(value: string): void {
-    let isValid = this._commonService.isNull(this.customRegExp)? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
-    if(isValid) {
-      this.warningMsgReturn = ''; 
-      this.defaultText = this.getNumberFormat(value);
-    } else { 
+    let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
+    this.defaultValueChange.emit(value);
+    if (isValid) {
+      this.warningMsgReturn = '';
+      this.defaultValue = this.getNumberFormat(value);
+    } else {
       this.warningMsgReturn = this.warningMsg;
     }
-    this.valueOut.emit(value);
   }
 
 }

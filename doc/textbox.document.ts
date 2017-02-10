@@ -5,6 +5,7 @@ const ATTRIBUTELIST: Array<any> = [
     { require: '*', name: 'name', type: 'text', description: `ใช้ระบุ name ของ textbox`},
     { require: '*', name: 'type', type: 'text', description: `ใช้ระบุประเภทข้อมูลของ textbox ประกอบด้วย
         text, password, integer, number, email, hidden`},
+    { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดค่าที่ต้องการรับ-ส่ง ใน textbox และสามารถนำไปใช้ต่อได้`},
     { require: '', name: 'numberFormat', type: 'format', description: `ใช้ร่วมกับ textbox ที่มี type="number"`},
     { require: '', name: 'label', type: 'text', description: `ใช้สำหรับใส่ข้อความใน label ของ text box`},
     { require: '', name: 'require', type: 'boolean', description: `ใช้กับ text box ที่จำเป็นต้องระบุค่า โดย
@@ -14,7 +15,6 @@ const ATTRIBUTELIST: Array<any> = [
     { require: '', name: 'readonly', type: 'boolean', description: `ใช้กำหนดให้ไม่สามารถแก้ไขข้อมูลใน text box ได้`},
     { require: '', name: 'maxlength', type: 'number', description: `ใช้กำหนดความยาวตัวอักษรสูงสุดที่สามารถพิมพ์ได้ใน text box 
         หากไม่ระบุจะมีค่า = 524288 ตัวอักษร`},
-    { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดข้อความที่ต้องการแสดงใน text box`},
     { require: '', name: 'placeholder', type: 'text', description: `ใช้กำหนดข้อความตัวอย่างใน text box`},
     { require: '', name: 'colorTheme', type: 'text', description: `ใช้กำหนดสีของ text box โดยค่าที่สามารถระบุได้ ประกอบด้วย
         success=สีเขียว, info=สีฟ้า, warning=สีส้ม, danger=สีแดง`},
@@ -95,10 +95,10 @@ export class TextboxDocument implements OnInit {
   private componentTag: string = '<gos-textbox>';
   private componentDescription: string = `Text box ใช้ในการรับค่าและแสดงผลข้อมูลตามประเภทต่างๆ`;
   private version: string = '1.0';
-  private releaseDate: string = '7/12/2016';
+  private releaseDate: string = '10/02/2017';
   private prefixSyntax: string = `<gos-textbox `;
-  private attrSyntax: string = `id="textbox _id" name=" textbox _name" type="type_name" 
-                                            [format="format_pattern"] [label="label_name"] [require="true_or_false"] [disable="true_or_false"] [readonly="true_or_false"] [maxlength="number"] [defaultValue="text"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
+  private attrSyntax: string = `id="textbox _id" name=" textbox _name" type="type_name" [ defaultValue="text" or [(defaultValue)]="default_value_parameter" ]
+                                            [format="format_pattern"] [label="label_name"] [require="true_or_false"] [disable="true_or_false"] [readonly="true_or_false"] [maxlength="number"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
   private suffixSyntax: string = `></gos-textbox>`;
   private attributeList = ATTRIBUTELIST;
   private systemjsLine = SYSTEMJSLINE;
@@ -107,20 +107,17 @@ export class TextboxDocument implements OnInit {
   private typeDescription = 'รายละเอียดของ text box ใน type ต่างๆดังต่อไปนี้';
   private numberFormatDescription = 'รูปแบบการแสดงผลข้อมูล text box type="number"';
   private eventList = EVENTLIST;
-  private gettingStartDetail = 'app.module.ts - ทำการ import และกำหนดค่าเพิ่มเติมใน declarations';
   private numeralJSVersion = '2.0.4';
   private regExp = /([A-Z])\w+/g;
 
-  text: string;
-  paramText = '{{text}}';
-  
+  paramText = '{{userName}}';
+  myInteger = 1111;
+  myNumber = 1111.22;
+  userName: string = "John";
+
   constructor() { }
 
   ngOnInit() {
-  }
-
-  textOut(text: any) {
-    text ? this.text = text : this.text = '';
   }
 
 }

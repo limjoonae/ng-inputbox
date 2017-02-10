@@ -13,13 +13,13 @@ var ATTRIBUTELIST = [
     { require: '*', name: 'id', type: 'text', description: "\u0E43\u0E0A\u0E49\u0E23\u0E30\u0E1A\u0E38 id \u0E02\u0E2D\u0E07 textbox" },
     { require: '*', name: 'name', type: 'text', description: "\u0E43\u0E0A\u0E49\u0E23\u0E30\u0E1A\u0E38 name \u0E02\u0E2D\u0E07 textbox" },
     { require: '*', name: 'type', type: 'text', description: "\u0E43\u0E0A\u0E49\u0E23\u0E30\u0E1A\u0E38\u0E1B\u0E23\u0E30\u0E40\u0E20\u0E17\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E02\u0E2D\u0E07 textbox \u0E1B\u0E23\u0E30\u0E01\u0E2D\u0E1A\u0E14\u0E49\u0E27\u0E22\n        text, password, integer, number, email, hidden" },
+    { require: '', name: 'defaultValue', type: 'text', description: "\u0E43\u0E0A\u0E49\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E04\u0E48\u0E32\u0E17\u0E35\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E23\u0E31\u0E1A-\u0E2A\u0E48\u0E07 \u0E43\u0E19 textbox \u0E41\u0E25\u0E30\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E19\u0E33\u0E44\u0E1B\u0E43\u0E0A\u0E49\u0E15\u0E48\u0E2D\u0E44\u0E14\u0E49" },
     { require: '', name: 'numberFormat', type: 'format', description: "\u0E43\u0E0A\u0E49\u0E23\u0E48\u0E27\u0E21\u0E01\u0E31\u0E1A textbox \u0E17\u0E35\u0E48\u0E21\u0E35 type=\"number\"" },
     { require: '', name: 'label', type: 'text', description: "\u0E43\u0E0A\u0E49\u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E43\u0E2A\u0E48\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21\u0E43\u0E19 label \u0E02\u0E2D\u0E07 text box" },
     { require: '', name: 'require', type: 'boolean', description: "\u0E43\u0E0A\u0E49\u0E01\u0E31\u0E1A text box \u0E17\u0E35\u0E48\u0E08\u0E33\u0E40\u0E1B\u0E47\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E23\u0E30\u0E1A\u0E38\u0E04\u0E48\u0E32 \u0E42\u0E14\u0E22\n        \u0E2B\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E38\u0E04\u0E48\u0E32 require =\"true\" \u0E08\u0E30\u0E41\u0E2A\u0E14\u0E07 * \u0E2B\u0E25\u0E31\u0E07 label" },
     { require: '', name: 'disable', type: 'boolean', description: "\u0E43\u0E0A\u0E49\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E1B\u0E34\u0E14\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19 textbox \u0E42\u0E14\u0E22\n        \u0E2B\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E38\u0E04\u0E48\u0E32 disable=\"true\" \u0E08\u0E30\u0E44\u0E21\u0E48\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E2B\u0E23\u0E37\u0E2D copy \u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21\u0E43\u0E19 textbox \u0E44\u0E14\u0E49" },
     { require: '', name: 'readonly', type: 'boolean', description: "\u0E43\u0E0A\u0E49\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E43\u0E2B\u0E49\u0E44\u0E21\u0E48\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E41\u0E01\u0E49\u0E44\u0E02\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E43\u0E19 text box \u0E44\u0E14\u0E49" },
     { require: '', name: 'maxlength', type: 'number', description: "\u0E43\u0E0A\u0E49\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E04\u0E27\u0E32\u0E21\u0E22\u0E32\u0E27\u0E15\u0E31\u0E27\u0E2D\u0E31\u0E01\u0E29\u0E23\u0E2A\u0E39\u0E07\u0E2A\u0E38\u0E14\u0E17\u0E35\u0E48\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E44\u0E14\u0E49\u0E43\u0E19 text box \n        \u0E2B\u0E32\u0E01\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38\u0E08\u0E30\u0E21\u0E35\u0E04\u0E48\u0E32 = 524288 \u0E15\u0E31\u0E27\u0E2D\u0E31\u0E01\u0E29\u0E23" },
-    { require: '', name: 'defaultValue', type: 'text', description: "\u0E43\u0E0A\u0E49\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21\u0E17\u0E35\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E41\u0E2A\u0E14\u0E07\u0E43\u0E19 text box" },
     { require: '', name: 'placeholder', type: 'text', description: "\u0E43\u0E0A\u0E49\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21\u0E15\u0E31\u0E27\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E43\u0E19 text box" },
     { require: '', name: 'colorTheme', type: 'text', description: "\u0E43\u0E0A\u0E49\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E2A\u0E35\u0E02\u0E2D\u0E07 text box \u0E42\u0E14\u0E22\u0E04\u0E48\u0E32\u0E17\u0E35\u0E48\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E23\u0E30\u0E1A\u0E38\u0E44\u0E14\u0E49 \u0E1B\u0E23\u0E30\u0E01\u0E2D\u0E1A\u0E14\u0E49\u0E27\u0E22\n        success=\u0E2A\u0E35\u0E40\u0E02\u0E35\u0E22\u0E27, info=\u0E2A\u0E35\u0E1F\u0E49\u0E32, warning=\u0E2A\u0E35\u0E2A\u0E49\u0E21, danger=\u0E2A\u0E35\u0E41\u0E14\u0E07" },
     { require: '', name: 'warningText', type: 'text', description: "\u0E43\u0E0A\u0E49\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21\u0E40\u0E15\u0E37\u0E2D\u0E19\u0E01\u0E23\u0E13\u0E35\u0E01\u0E23\u0E2D\u0E01\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E1C\u0E34\u0E14 \n        \u0E2B\u0E32\u0E01\u0E44\u0E21\u0E48\u0E23\u0E30\u0E1A\u0E38\u0E08\u0E30\u0E41\u0E2A\u0E14\u0E07\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21\u0E40\u0E15\u0E37\u0E2D\u0E19\u0E15\u0E32\u0E21\u0E1B\u0E23\u0E30\u0E40\u0E20\u0E17\u0E02\u0E2D\u0E07 text box" },
@@ -85,9 +85,9 @@ var TextboxDocument = (function () {
         this.componentTag = '<gos-textbox>';
         this.componentDescription = "Text box \u0E43\u0E0A\u0E49\u0E43\u0E19\u0E01\u0E32\u0E23\u0E23\u0E31\u0E1A\u0E04\u0E48\u0E32\u0E41\u0E25\u0E30\u0E41\u0E2A\u0E14\u0E07\u0E1C\u0E25\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E15\u0E32\u0E21\u0E1B\u0E23\u0E30\u0E40\u0E20\u0E17\u0E15\u0E48\u0E32\u0E07\u0E46";
         this.version = '1.0';
-        this.releaseDate = '7/12/2016';
+        this.releaseDate = '10/02/2017';
         this.prefixSyntax = "<gos-textbox ";
-        this.attrSyntax = "id=\"textbox _id\" name=\" textbox _name\" type=\"type_name\" \n                                            [format=\"format_pattern\"] [label=\"label_name\"] [require=\"true_or_false\"] [disable=\"true_or_false\"] [readonly=\"true_or_false\"] [maxlength=\"number\"] [defaultValue=\"text\"] [placeholder=\"text\"] [colorTheme=\"text\"] [warningText=\"text\"]";
+        this.attrSyntax = "id=\"textbox _id\" name=\" textbox _name\" type=\"type_name\" [ defaultValue=\"text\" or [(defaultValue)]=\"default_value_parameter\" ]\n                                            [format=\"format_pattern\"] [label=\"label_name\"] [require=\"true_or_false\"] [disable=\"true_or_false\"] [readonly=\"true_or_false\"] [maxlength=\"number\"] [placeholder=\"text\"] [colorTheme=\"text\"] [warningText=\"text\"]";
         this.suffixSyntax = "></gos-textbox>";
         this.attributeList = ATTRIBUTELIST;
         this.systemjsLine = SYSTEMJSLINE;
@@ -96,15 +96,14 @@ var TextboxDocument = (function () {
         this.typeDescription = 'รายละเอียดของ text box ใน type ต่างๆดังต่อไปนี้';
         this.numberFormatDescription = 'รูปแบบการแสดงผลข้อมูล text box type="number"';
         this.eventList = EVENTLIST;
-        this.gettingStartDetail = 'app.module.ts - ทำการ import และกำหนดค่าเพิ่มเติมใน declarations';
         this.numeralJSVersion = '2.0.4';
         this.regExp = /([A-Z])\w+/g;
-        this.paramText = '{{text}}';
+        this.paramText = '{{userName}}';
+        this.myInteger = 1111;
+        this.myNumber = 1111.22;
+        this.userName = "John";
     }
     TextboxDocument.prototype.ngOnInit = function () {
-    };
-    TextboxDocument.prototype.textOut = function (text) {
-        text ? this.text = text : this.text = '';
     };
     TextboxDocument = __decorate([
         core_1.Component({
