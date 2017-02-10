@@ -80,6 +80,7 @@ var TextboxComponent = (function () {
         }
     };
     TextboxComponent.prototype.validateNumber = function (value) {
+        // console.log('Before Check: ', value);
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
         this.defaultValueChange.emit(value);
         if (isValid) {

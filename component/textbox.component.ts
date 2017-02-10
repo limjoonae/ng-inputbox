@@ -90,7 +90,7 @@ export class TextboxComponent implements OnInit {
     this.defaultValueChange.emit(value);
   }
 
-  validateInteger(value: string): void {
+  validateInteger(value: any): void {
     let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateInteger(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
     this.defaultValueChange.emit(value);
     if (isValid) {
@@ -101,7 +101,8 @@ export class TextboxComponent implements OnInit {
     }
   }
 
-  validateNumber(value: string): void {
+  validateNumber(value: any): void {
+    // console.log('Before Check: ', value);
     let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
     this.defaultValueChange.emit(value);
     if (isValid) {
