@@ -21,8 +21,6 @@ export class ValidationService {
   }
 
   validateWithCustomRegExp(regExp: RegExp, value: string): boolean {
-    console.log('regExp: '+regExp);
-    console.log('value: '+value);
     let pattern = regExp;
     return (value == '' || pattern.test(value))? true : false;
   }
