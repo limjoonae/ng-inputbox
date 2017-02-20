@@ -12,8 +12,8 @@ import { TransformService } from './transform.service';
 })
 export class TextboxComponent implements OnInit {
 
-  @Input() id: string;
-  @Input() name: string;
+  @Input() gosId: string;
+  @Input() gosName: string;
   @Input() type: string;
   @Input() label: string;
   @Input() require: string;

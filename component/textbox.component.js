@@ -94,11 +94,11 @@ var TextboxComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], TextboxComponent.prototype, "id", void 0);
+    ], TextboxComponent.prototype, "gosId", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], TextboxComponent.prototype, "name", void 0);
+    ], TextboxComponent.prototype, "gosName", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
