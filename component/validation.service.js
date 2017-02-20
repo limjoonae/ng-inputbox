@@ -25,8 +25,6 @@ var ValidationService = (function () {
         return (value == '' || pattern.test(value)) ? true : false;
     };
     ValidationService.prototype.validateWithCustomRegExp = function (regExp, value) {
-        console.log('regExp: ' + regExp);
-        console.log('value: ' + value);
         var pattern = regExp;
         return (value == '' || pattern.test(value)) ? true : false;
     };
