@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 const ATTRIBUTELIST: Array<any> = [
-    { require: '*', name: 'id', type: 'text', description: `ใช้ระบุ id ของ textbox`},
-    { require: '*', name: 'name', type: 'text', description: `ใช้ระบุ name ของ textbox`},
+    { require: '*', name: 'gosId', type: 'text', description: `ใช้ระบุ id ของ textbox`},
+    { require: '*', name: 'gosName', type: 'text', description: `ใช้ระบุ name ของ textbox`},
     { require: '*', name: 'type', type: 'text', description: `ใช้ระบุประเภทข้อมูลของ textbox ประกอบด้วย
         text, password, integer, number, email, hidden`},
     { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดค่าที่ต้องการรับ-ส่ง ใน textbox และสามารถนำไปใช้ต่อได้`},
-    { require: '', name: 'numberFormat', type: 'format', description: `ใช้ร่วมกับ textbox ที่มี type="number"`},
+    { require: '', name: 'numberFormat', type: 'format', description: `ใช้กำหนด format การแสดงตัวเลขของ textbox type="number"`},
     { require: '', name: 'label', type: 'text', description: `ใช้สำหรับใส่ข้อความใน label ของ text box`},
     { require: '', name: 'require', type: 'boolean', description: `ใช้กับ text box ที่จำเป็นต้องระบุค่า โดย
         หากระบุค่า require ="true" จะแสดง * หลัง label`},
@@ -20,8 +20,8 @@ const ATTRIBUTELIST: Array<any> = [
         success=สีเขียว, info=สีฟ้า, warning=สีส้ม, danger=สีแดง`},
     { require: '', name: 'warningText', type: 'text', description: `ใช้กำหนดข้อความเตือนกรณีกรอกข้อมูลผิด 
         หากไม่ระบุจะแสดงข้อความเตือนตามประเภทของ text box`},
-    { require: '', name: 'customRegExp', type: 'regExp', description: `กำหนด Regular Expression สำหรับตรวจสอบข้อมูลที่ระบุใน textbox
-    หากไม่กำหนดค่า จะไม่มีการ validate ใน type: text, password และจะ validate ตาม default condition ใน type: integer, numberม email`},
+    { require: '', name: 'customRegExp', type: 'regExp', description: `ใช้กำหนด Regular Expression สำหรับตรวจสอบข้อมูลที่ระบุใน textbox
+    type: text, password`},
 ];
 const SYSTEMJSLINE: Array<any> = [
     `map: {`,
@@ -56,17 +56,12 @@ const SYSTEMJSLINE: Array<any> = [
 ];
 
 const TYPELIST: Array<any> = [
-    { type: 'text', description: `รับข้อมูลตัวเลข ตัวอักษร และอักขระพิเศษ`},
-    { type: 'password', description: `รับข้อมูลตัวเลข ตัวอักษร และอักขระพิเศษ`},
-    { type: 'integer', description: `รับข้อมูลตัวเลชจำนวนเต็มบวก ศูนย์ และจำนวนเต็มลบ ไม่รับเครื่องหมายจุลภาค (,)`},
-    { type: 'number', description: `รับข้อมูลตัวเลข จำนวนเต็มลบ, 0, จำนวนเฅ็มบวก และ จำนวนทศนิยม ไม่รับเครื่องหมายจุลภาค (,)`},
-    { type: 'email', description: `รับข้อมูล format email 
-        ตัวอย่าง: example@email.com, example_2@domain.co.uk`},
-    { type: 'hidden', description: `รับข้อมูลตัวเลข ตัวอักษร และอักขระพิเศษ`},
-];
-
-const EVENTLIST: Array<any> = [
-    { name: `(valueOut)` ,parameter: 'event: function_name($event)', description: `ใช้ในการนำค่าจาก textbox ออกมาใช้`},
+    { type: 'text', description: `สามารถระบุตัวอักษร และอักขระพิเศษต่างๆ ไม่มีการ validate เบื้องต้น`},
+    { type: 'password', description: `สามารถระบุตัวอักษร และอักขระพิเศษต่างๆ ไม่มีการ validate เบื้องต้น`},
+    { type: 'integer', description: `รับเฉพาะตัวเลขจำนวนเต็มบวก ศูนย์ และจำนวนเต็มลบ`},
+    { type: 'number', description: `รับเฉพาะตัวเลขจำนวนเต็มบวก ศูนย์ จำนวนเต็มลบ และ จำนวนทศนิยม default format เป็น 0,0.00`},
+    { type: 'email', description: `รับเฉพาะข้อมูล email dormat ตัวอย่าง: example@email.com, example_2@domain.co.uk`},
+    { type: 'hidden', description: `ใช้ระบุข้อมูลตัวอักษร และอักขระพิเศษต่างๆ ไม่แสดงค่าใดๆบนหน้าจอ ไม่มีการ validate เบื้องต้น`},
 ];
 
 const APPMODULELINE: Array<any> = [
@@ -105,8 +100,6 @@ export class TextboxDocument implements OnInit {
   private appModuleLine = APPMODULELINE;
   private typeList = TYPELIST;
   private typeDescription = 'รายละเอียดของ text box ใน type ต่างๆดังต่อไปนี้';
-  private numberFormatDescription = 'รูปแบบการแสดงผลข้อมูล text box type="number"';
-  private eventList = EVENTLIST;
   private numeralJSVersion = '2.0.4';
   private regExp = /([A-Z])\w+/g;
 
