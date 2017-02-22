@@ -29,8 +29,8 @@ var TextboxComponent = (function () {
         this.defaultValueChange.emit(this.defaultValue);
         this.isValidChange.emit(this.isValid);
         this.defaultValue = this.returnDefaultValueOnInit(this.defaultValue);
+        this.numberWithFormat = this.defaultValue;
         this.warningMsg = this._commonService.isNull(this.warningText) ? 'please input valid '.concat(this.type) : this.warningText;
-        console.log('isValid on Init:', this.isValid);
     };
     TextboxComponent.prototype.returnDefaultValueOnInit = function (value) {
         if (this._commonService.isNull(this.defaultValue)) {
@@ -86,15 +86,15 @@ var TextboxComponent = (function () {
         this.isValidChange.emit(isValid);
     };
     TextboxComponent.prototype.validateNumber = function (value) {
-        // console.log('Before Check: ', value);
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
         this.defaultValueChange.emit(value);
         if (isValid) {
             this.warningMsgReturn = '';
-            this.defaultValue = this.getNumberFormat(value);
+            this.numberWithFormat = this.getNumberFormat(value);
         }
         else {
             this.warningMsgReturn = this.warningMsg;
+            this.numberWithFormat = value;
         }
         this.isValidChange.emit(isValid);
     };

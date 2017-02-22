@@ -29,6 +29,7 @@ export class TextboxComponent implements OnInit {
   @Input() warningText: string;
   @Input() numberFormat: string;
   @Input() customRegExp: RegExp;
+  public numberWithFormat: any;
   public classPrefix = 'alert';
   public colorClass: string;
   public warningMsgReturn: string;
@@ -47,8 +48,8 @@ export class TextboxComponent implements OnInit {
     this.defaultValueChange.emit(this.defaultValue);
     this.isValidChange.emit(this.isValid);
     this.defaultValue = this.returnDefaultValueOnInit(this.defaultValue);
+    this.numberWithFormat = this.defaultValue;
     this.warningMsg = this._commonService.isNull(this.warningText) ? 'please input valid '.concat(this.type) : this.warningText;
-    console.log('isValid on Init:', this.isValid);
   }
 
   returnDefaultValueOnInit(value: any): any {
@@ -74,7 +75,7 @@ export class TextboxComponent implements OnInit {
     return this._transformStringNumber.toIntegerFormat(value);
   }
 
-  getNumberFormat(value: string): string {
+  getNumberFormat(value: any): any {
     return this._transformStringNumber.toNumberFormat(value, this.numberFormat);
   }
 
@@ -109,14 +110,14 @@ export class TextboxComponent implements OnInit {
   }
 
   validateNumber(value: any): void {
-    // console.log('Before Check: ', value);
     let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
     this.defaultValueChange.emit(value);
     if (isValid) {
       this.warningMsgReturn = '';
-      this.defaultValue = this.getNumberFormat(value);
+      this.numberWithFormat = this.getNumberFormat(value);
     } else {
       this.warningMsgReturn = this.warningMsg;
+      this.numberWithFormat = value;
     }
     this.isValidChange.emit(isValid);
   }
