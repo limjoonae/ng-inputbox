@@ -10,7 +10,7 @@ describe('Service: TransformService', () => {
     });
   });
 
-  it('should create', inject([TransformService], (service: TransformService) => {
+  it('should create service', inject([TransformService], (service: TransformService) => {
     expect(service).toBeTruthy();
   }));
 });

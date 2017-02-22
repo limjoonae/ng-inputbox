@@ -8,7 +8,7 @@ describe('Service: TransformService', function () {
             providers: [transform_service_1.TransformService]
         });
     });
-    it('should create', testing_1.inject([transform_service_1.TransformService], function (service) {
+    it('should create service', testing_1.inject([transform_service_1.TransformService], function (service) {
         expect(service).toBeTruthy();
     }));
 });
