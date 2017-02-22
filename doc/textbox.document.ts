@@ -6,6 +6,7 @@ const ATTRIBUTELIST: Array<any> = [
     { require: '*', name: 'type', type: 'text', description: `ใช้ระบุประเภทข้อมูลของ textbox ประกอบด้วย
         text, password, integer, number, email, hidden`},
     { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดค่าที่ต้องการรับ-ส่ง ใน textbox และสามารถนำไปใช้ต่อได้`},
+    { require: '', name: 'isValid', type: 'boolean', description: `ใช้ัรับ-ส่งผลของการ validate หากข้อมูลใน textbox ถูกต้อง จะส่งค่ากลับเป็น true หากไม่ถูกต้อง ส่งค่ากลับเป้น false`},
     { require: '', name: 'numberFormat', type: 'format', description: `ใช้กำหนด format การแสดงตัวเลขของ textbox type="number"`},
     { require: '', name: 'label', type: 'text', description: `ใช้สำหรับใส่ข้อความใน label ของ text box`},
     { require: '', name: 'require', type: 'boolean', description: `ใช้กับ text box ที่จำเป็นต้องระบุค่า โดย
@@ -60,7 +61,7 @@ const TYPELIST: Array<any> = [
     { type: 'password', description: `สามารถระบุตัวอักษร และอักขระพิเศษต่างๆ ไม่มีการ validate เบื้องต้น`},
     { type: 'integer', description: `รับเฉพาะตัวเลขจำนวนเต็มบวก ศูนย์ และจำนวนเต็มลบ`},
     { type: 'number', description: `รับเฉพาะตัวเลขจำนวนเต็มบวก ศูนย์ จำนวนเต็มลบ และ จำนวนทศนิยม default format เป็น 0,0.00`},
-    { type: 'email', description: `รับเฉพาะข้อมูล email dormat ตัวอย่าง: example@email.com, example_2@domain.co.uk`},
+    { type: 'email', description: `รับเฉพาะข้อมูล email format ตัวอย่าง: example@email.com, example_2@domain.co.uk`},
     { type: 'hidden', description: `ใช้ระบุข้อมูลตัวอักษร และอักขระพิเศษต่างๆ ไม่แสดงค่าใดๆบนหน้าจอ ไม่มีการ validate เบื้องต้น`},
 ];
 
@@ -101,12 +102,16 @@ export class TextboxDocument implements OnInit {
   private typeList = TYPELIST;
   private typeDescription = 'รายละเอียดของ text box ใน type ต่างๆดังต่อไปนี้';
   private numeralJSVersion = '2.0.4';
-  private regExp = /([A-Z])\w+/g;
+  private regExp = /^[a-zA-Z0-9]{8}$/g;
 
   paramText = '{{userName}}';
   myInteger = 1111;
   myNumber = 1111.22;
   userName: string = "John";
+  isValidFlag: boolean;
+  isValidFlagText = '{{isValidFlag}}';
+  isValidCustomFlag: boolean;
+  isValidCustomFlagText = '{{isValidCustomFlag}}';
 
   constructor() { }
 

@@ -2,19 +2,19 @@
 	<div *ngIf="type != 'hidden'"class="textbox-with-msg">
 		<gos-label [label]="label" [require]="require"></gos-label>
 		<input *ngIf="type == 'text'" #input class="form-control {{colorClass}}" type="text" [id]="gosId" [name]="gosName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
-			[value]="defaultValue" [customMaxlength]="maxlength" (change)="customValidate(input.value)">
+			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
 
 		<input *ngIf="type == 'password'" #input class="form-control {{colorClass}}" type="password" [id]="gosId" [name]="gosName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
-			[value]="defaultValue" [customMaxlength]="maxlength" (change)="customValidate(input.value)">
+			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
 
 		<input *ngIf="type == 'integer'" #input class="form-control {{colorClass}}" [id]="gosId" [name]="gosName" [placeholder]="placeholder" [customDisabled]="disable"
-			[customReadonly]="readonly" type="number" [value]="defaultValue" [customMaxlength]="maxlength" (blur)="validateInteger(input.value)">
+			[customReadonly]="readonly" type="number" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateInteger(input.value)">
 
 		<input *ngIf="type == 'number'" #input class="form-control {{colorClass}}" [id]="gosId" [name]="gosName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			type="currency" [value]="defaultValue" (focus)="clearFormat(input.value)" (blur)="validateNumber(input.value)">
 
 		<input *ngIf="type == 'email'" #input class="form-control {{colorClass}}" type="email" [id]="gosId" [name]="gosName" [placeholder]="placeholder" [customDisabled]="disable"
-			[customReadonly]="readonly" [value]="defaultValue" [customMaxlength]="maxlength" (change)="validateEmail(input.value)">
+			[customReadonly]="readonly" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateEmail(input.value)">
 		<small id="{{id}}_warningMsg" class="form-text text-muted"><font color="red">{{warningMsgReturn}}</font></small>
 	</div>
 	<input *ngIf="type == 'hidden'" [id]="gosId" [name]="gosName" type="hidden" [value]="defaultValue">

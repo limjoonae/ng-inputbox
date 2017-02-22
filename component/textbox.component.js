@@ -19,6 +19,7 @@ var TextboxComponent = (function () {
         this._validationService = _validationService;
         this._transformStringNumber = _transformStringNumber;
         this.defaultValueChange = new core_1.EventEmitter();
+        this.isValidChange = new core_1.EventEmitter();
         this.classPrefix = 'alert';
         this.space = ' ';
     }
@@ -26,8 +27,10 @@ var TextboxComponent = (function () {
         this.colorClass = this.setStyleClass(this.colorTheme, this.classPrefix);
         this.placeholder = this._commonService.isNull(this.placeholder) ? '' : this.placeholder;
         this.defaultValueChange.emit(this.defaultValue);
+        this.isValidChange.emit(this.isValid);
         this.defaultValue = this.returnDefaultValueOnInit(this.defaultValue);
         this.warningMsg = this._commonService.isNull(this.warningText) ? 'please input valid '.concat(this.type) : this.warningText;
+        console.log('isValid on Init:', this.isValid);
     };
     TextboxComponent.prototype.returnDefaultValueOnInit = function (value) {
         if (this._commonService.isNull(this.defaultValue)) {
@@ -62,11 +65,13 @@ var TextboxComponent = (function () {
         var isValid = this._commonService.isNull(this.customRegExp) ? true : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
         this.warningMsgReturn = isValid ? '' : this.warningMsg;
         this.defaultValueChange.emit(value);
+        this.isValidChange.emit(isValid);
     };
     TextboxComponent.prototype.validateEmail = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateEmail(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
         this.warningMsgReturn = isValid ? '' : this.warningMsg;
         this.defaultValueChange.emit(value);
+        this.isValidChange.emit(isValid);
     };
     TextboxComponent.prototype.validateInteger = function (value) {
         var isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateInteger(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
@@ -78,6 +83,7 @@ var TextboxComponent = (function () {
         else {
             this.warningMsgReturn = this.warningMsg;
         }
+        this.isValidChange.emit(isValid);
     };
     TextboxComponent.prototype.validateNumber = function (value) {
         // console.log('Before Check: ', value);
@@ -90,6 +96,7 @@ var TextboxComponent = (function () {
         else {
             this.warningMsgReturn = this.warningMsg;
         }
+        this.isValidChange.emit(isValid);
     };
     __decorate([
         core_1.Input(), 
@@ -131,6 +138,14 @@ var TextboxComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', Object)
     ], TextboxComponent.prototype, "defaultValueChange", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], TextboxComponent.prototype, "isValid", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], TextboxComponent.prototype, "isValidChange", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)

@@ -147,7 +147,8 @@
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox defaultValue="1111.22" type="number" label="Number Box" gosId="number_box" colorTheme="warning" placeholder="0-9"></gos-textbox>
+					<gos-textbox [(isValid)]="isValidFlag" defaultValue="1111.22" type="number" label="Number Box" gosId="number_box" colorTheme="warning" placeholder="0-9"></gos-textbox>
+					<p>is valid number: {{isValidFlag}}</p>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_4">
@@ -159,7 +160,12 @@
 					</div>
 					<div id="collapse_ex_4" class="collapse" role="tabpanel" aria-labelledby="ex_4">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox defaultValue="1111.22" type="number" label="Number Box" gosId="number_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/gos-textbox&gt;</code>
+							<code>&lt;gos-textbox defaultValue="1111.22" type="number" label="Number Box" gosId="number_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/gos-textbox&gt;</code><br>
+							<code>is valid number: {{isValidFlagText}}</code>
+							<p></p>
+							<p></p>
+							<p>component.ts</p>
+							<pre><code>isValidFlag: boolean;</code></pre>
 						</div>
 					</div>
 				</div>
@@ -185,7 +191,8 @@
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox type="password" label="Custom Validate Password" gosId="custom_validate" [customRegExp]="regExp"></gos-textbox>
+					<gos-textbox [(isValid)]="isValidCustomFlag" type="password" label="Custom Validate Password" gosId="custom_validate" [customRegExp]="regExp"></gos-textbox>
+					<p>is valid password: {{isValidCustomFlag}}</p>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_6">
@@ -197,11 +204,13 @@
 					</div>
 					<div id="collapse_ex_6" class="collapse" role="tabpanel" aria-labelledby="ex_6">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox type="password" label="Custom Validate" gosId="custom_validate" [customRegExp]="regExp"&gt;&lt;/gos-textbox&gt;</code>
+							<code>&lt;gos-textbox [(isValid)]="isValidCustomFlag" type="password" label="Custom Validate" gosId="custom_validate" [customRegExp]="regExp"&gt;&lt;/gos-textbox&gt;</code>
+							<code>is valid password: {{isValidCustomFlagText}}</code>
 							<p></p>
 							<p></p>
 							<p>component.ts</p>
-							<pre><code>regExp = /([A-Z])\w+/g;</code></pre>
+							<pre><code>regExp = {{regExp}}</code></pre>
+							<pre><code>isValidCustomFlag: boolean;</code></pre>
 						</div>
 					</div>
 				</div>
@@ -209,7 +218,7 @@
 			<div class="row row-in-tab">
 				<div class="col-md-3">
 					<gos-textbox [(defaultValue)]="userName" type="text" label="Get value from textbox" require="true" gosId="textbox_3" colorTheme="danger"></gos-textbox>
-					valueOut: {{userName}}
+					value return: {{userName}}
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_7">
@@ -222,7 +231,7 @@
 					<div id="collapse_ex_7" class="collapse" role="tabpanel" aria-labelledby="ex_7">
 						<div class="jumbotron">
 							<code>&lt;gos-textbox [(defaultValue)]="userName" type="text" label="Get value from textbox" require="true" gosId="textbox_3" colorTheme="danger"&gt;&lt;/gos-textbox&gt;</code><br>
-							<code>valueOut: {{paramText}}</code>
+							<code>value return: {{paramText}}</code>
 							<p></p>
 							<p></p>
 							<p>component.ts</p>
