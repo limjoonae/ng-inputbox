@@ -6,7 +6,7 @@ export class ValidationService {
   constructor() { }
 
   validateEmail(value: string): boolean { 
-    let pattern = /^[a-z0-9](\.?[a-z0-9_-]){0,}@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/g;
+    let pattern = /^[a-z0-9](\.?[a-z0-9_-])*@[a-z0-9]+\.([a-z]{2,3}\.)?[a-z]{2,4}$/g;
     return (value == '' || pattern.test(value))? true : false;
   }
 

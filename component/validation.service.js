@@ -13,7 +13,7 @@ var ValidationService = (function () {
     function ValidationService() {
     }
     ValidationService.prototype.validateEmail = function (value) {
-        var pattern = /^[a-z0-9](\.?[a-z0-9_-]){0,}@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/g;
+        var pattern = /^[a-z0-9](\.?[a-z0-9_-])*@[a-z0-9]+\.([a-z]{2,3}\.)?[a-z]{2,4}$/g;
         return (value == '' || pattern.test(value)) ? true : false;
     };
     ValidationService.prototype.validateInteger = function (value) {
