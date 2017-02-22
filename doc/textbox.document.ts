@@ -6,7 +6,7 @@ const ATTRIBUTELIST: Array<any> = [
     { require: '*', name: 'type', type: 'text', description: `ใช้ระบุประเภทข้อมูลของ textbox ประกอบด้วย
         text, password, integer, number, email, hidden`},
     { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดค่าที่ต้องการรับ-ส่ง ใน textbox และสามารถนำไปใช้ต่อได้`},
-    { require: '', name: 'isValid', type: 'boolean', description: `ใช้ัรับ-ส่งผลของการ validate หากข้อมูลใน textbox ถูกต้อง จะส่งค่ากลับเป็น true หากไม่ถูกต้อง ส่งค่ากลับเป้น false`},
+    { require: '', name: 'isValid', type: 'boolean', description: `ใช้รับ-ส่งผลของการ validate หากข้อมูลใน textbox ถูกต้อง จะส่งค่ากลับเป็น true หากไม่ถูกต้อง ส่งค่ากลับเป็น false`},
     { require: '', name: 'numberFormat', type: 'format', description: `ใช้กำหนด format การแสดงตัวเลขของ textbox type="number"`},
     { require: '', name: 'label', type: 'text', description: `ใช้สำหรับใส่ข้อความใน label ของ text box`},
     { require: '', name: 'require', type: 'boolean', description: `ใช้กับ text box ที่จำเป็นต้องระบุค่า โดย
