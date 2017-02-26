@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TooltipModule } from 'ng2-bootstrap';
-import { TextboxComponent } from './textbox.component';
-import { TransformService } from './transform.service';
-import { ValidationService } from './validation.service';
+import { TextboxComponent } from './component/textbox.component';
+import { TransformService } from './component/transform.service';
+import { ValidationService } from './component/validation.service';
 import { BootstrapClassService, CommonService } from 'gos-service';
 import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective, CustomRequiredDirective } from 'gos-directive';
 
