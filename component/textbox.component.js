@@ -171,7 +171,6 @@ var TextboxComponent = (function () {
             moduleId: module.id,
             selector: 'gos-textbox',
             templateUrl: './textbox.component.html',
-            styleUrls: ['./textbox.component.css'],
             providers: [gos_service_1.BootstrapClassService, gos_service_1.CommonService, validation_service_1.ValidationService, transform_service_1.TransformService]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof gos_service_1.BootstrapClassService !== 'undefined' && gos_service_1.BootstrapClassService) === 'function' && _a) || Object, (typeof (_b = typeof gos_service_1.CommonService !== 'undefined' && gos_service_1.CommonService) === 'function' && _b) || Object, validation_service_1.ValidationService, transform_service_1.TransformService])

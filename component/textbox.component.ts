@@ -7,7 +7,6 @@ import { TransformService } from './transform.service';
   moduleId: module.id,
   selector: 'gos-textbox',
   templateUrl: './textbox.component.html',
-  styleUrls: ['./textbox.component.css'],
   providers: [BootstrapClassService, CommonService, ValidationService, TransformService]
 })
 export class TextboxComponent implements OnInit {
