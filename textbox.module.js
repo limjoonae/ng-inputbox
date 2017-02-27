@@ -19,6 +19,12 @@ var gos_directive_1 = require('gos-directive');
 var TextboxModule = (function () {
     function TextboxModule() {
     }
+    TextboxModule.forRoot = function () {
+        return {
+            ngModule: TextboxModule,
+            providers: [transform_service_1.TransformService, validation_service_1.ValidationService, gos_service_1.BootstrapClassService, gos_service_1.CommonService]
+        };
+    };
     TextboxModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, ng2_bootstrap_1.TooltipModule.forRoot()],
@@ -26,7 +32,6 @@ var TextboxModule = (function () {
                 textbox_component_1.TextboxComponent,
                 gos_directive_1.CustomDisabledDirective, gos_directive_1.CustomReadonlyDirective, gos_directive_1.CustomMaxlengthDirective, gos_directive_1.CustomRequiredDirective,
             ],
-            providers: [transform_service_1.TransformService, validation_service_1.ValidationService, gos_service_1.BootstrapClassService, gos_service_1.CommonService],
             exports: [textbox_component_1.TextboxComponent]
         }), 
         __metadata('design:paramtypes', [])

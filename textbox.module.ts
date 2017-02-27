@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TooltipModule } from 'ng2-bootstrap';
@@ -14,7 +14,13 @@ import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirect
     TextboxComponent,
     CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective, CustomRequiredDirective,
   ],
-  providers: [ TransformService, ValidationService, BootstrapClassService, CommonService],
   exports: [TextboxComponent]
 })
-export class TextboxModule {}
+export class TextboxModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: TextboxModule,
+      providers: [ TransformService, ValidationService, BootstrapClassService, CommonService]
+    }
+  }
+}
