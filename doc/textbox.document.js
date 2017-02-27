@@ -102,8 +102,7 @@ var TextboxDocument = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'textbox-document',
-            templateUrl: './textbox.document.html',
-            styleUrls: ['./textbox.document.css']
+            templateUrl: './textbox.document.html'
         }), 
         __metadata('design:paramtypes', [])
     ], TextboxDocument);
