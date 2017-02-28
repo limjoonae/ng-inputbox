@@ -14,25 +14,26 @@ var ng2_bootstrap_1 = require('ng2-bootstrap');
 var textbox_component_1 = require('./component/textbox.component');
 var transform_service_1 = require('./component/transform.service');
 var validation_service_1 = require('./component/validation.service');
-var gos_service_1 = require('gos-service');
-var gos_directive_1 = require('gos-directive');
+var go_label_1 = require('go-label');
+var go_service_1 = require('go-service');
+var go_directive_1 = require('go-directive');
 var TextboxModule = (function () {
     function TextboxModule() {
     }
     TextboxModule.forRoot = function () {
         return {
             ngModule: TextboxModule,
-            providers: [transform_service_1.TransformService, validation_service_1.ValidationService, gos_service_1.BootstrapClassService, gos_service_1.CommonService]
+            providers: [transform_service_1.TransformService, validation_service_1.ValidationService, go_service_1.BootstrapClassService, go_service_1.CommonService]
         };
     };
     TextboxModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, ng2_bootstrap_1.TooltipModule.forRoot()],
             declarations: [
-                textbox_component_1.TextboxComponent,
-                gos_directive_1.CustomDisabledDirective, gos_directive_1.CustomReadonlyDirective, gos_directive_1.CustomMaxlengthDirective, gos_directive_1.CustomRequiredDirective,
+                textbox_component_1.TextboxComponent, go_label_1.LabelComponent,
+                go_directive_1.CustomDisabledDirective, go_directive_1.CustomReadonlyDirective, go_directive_1.CustomMaxlengthDirective
             ],
-            exports: [textbox_component_1.TextboxComponent]
+            exports: [textbox_component_1.TextboxComponent, go_label_1.LabelComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], TextboxModule);

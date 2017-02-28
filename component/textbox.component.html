@@ -1,5 +1,5 @@
 <span *ngIf="type != 'hidden'">
-	<label [for]="gosId">{{label}}<i *ngIf="require == 'true'" aria-hidden="true" style="color: #ff0000;  margin-left: 0.25rem;">*</i></label>
+	<go-label [label]="label" [forId]="gosId" [require]="require"></go-label>
 	<span style="margin-left: 0.25rem; cursor:help;"><i *ngIf="warningMsgReturn != '' && warningMsgReturn != null" class="fa fa-exclamation-triangle" style="color: #ffa500;" [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="right"></i></span>
 	<span *ngIf="require == 'true'">
 		<input ngModel ngDefaultControl required *ngIf="type == 'text'" #input class="form-control {{colorClass}}" type="text" [id]="gosId" [name]="gosName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"

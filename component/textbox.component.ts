@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BootstrapClassService, CommonService } from 'gos-service';
+import { BootstrapClassService, CommonService } from 'go-service';
 import { ValidationService } from './validation.service';
 import { TransformService } from './transform.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'gos-textbox',
+  selector: 'go-textbox',
   templateUrl: './textbox.component.html',
   providers: [BootstrapClassService, CommonService, ValidationService, TransformService]
 })

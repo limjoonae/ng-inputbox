@@ -90,7 +90,7 @@
 		<div class="jumbotron">
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox defaultValue="John" type="text" label="First Name" require="true" gosId="textbox_1" colorTheme="success"></gos-textbox>
+					<go-textbox defaultValue="John" type="text" label="First Name" require="true" gosId="textbox_1" colorTheme="success"></go-textbox>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_1">
@@ -102,14 +102,14 @@
 					</div>
 					<div id="collapse_ex_1" class="collapse" role="tabpanel" aria-labelledby="ex_1">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox defaultValue="John" type="text" label="First Name" require="true" gosId="textbox_1" colorTheme="success"&gt;&lt;/gos-textbox&gt;</code>
+							<code>&lt;go-textbox defaultValue="John" type="text" label="First Name" require="true" gosId="textbox_1" colorTheme="success"&gt;&lt;/go-textbox&gt;</code>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox maxlength="6" type="password" label="Password Box" gosId="password_box" colorTheme="info" name="password_box"></gos-textbox>
+					<go-textbox maxlength="6" type="password" label="Password Box" gosId="password_box" colorTheme="info" name="password_box"></go-textbox>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_2">
@@ -121,14 +121,14 @@
 					</div>
 					<div id="collapse_ex_2" class="collapse" role="tabpanel" aria-labelledby="ex_2">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox maxlength="6" type="password" label="Password Box" gosId="password_box" colorTheme="info"&gt;&lt;/gos-textbox&gt;</code>
+							<code>&lt;go-textbox maxlength="6" type="password" label="Password Box" gosId="password_box" colorTheme="info"&gt;&lt;/go-textbox&gt;</code>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox maxlength="6" defaultValue="1111" type="integer" label="Integer Box" gosId="integer_box" colorTheme="warning" placeholder="0-9"></gos-textbox>
+					<go-textbox maxlength="6" defaultValue="1111" type="integer" label="Integer Box" gosId="integer_box" colorTheme="warning" placeholder="0-9"></go-textbox>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_3">
@@ -140,14 +140,14 @@
 					</div>
 					<div id="collapse_ex_3" class="collapse" role="tabpanel" aria-labelledby="ex_3">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox maxlength="6" defaultValue="1111" type="number" label="Integer Box" gosId="integer_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/gos-textbox&gt;</code>
+							<code>&lt;go-textbox maxlength="6" defaultValue="1111" type="number" label="Integer Box" gosId="integer_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/go-textbox&gt;</code>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox [(isValid)]="isValidFlag" defaultValue="1111.22" type="number" label="Number Box" gosId="number_box" colorTheme="warning" placeholder="0-9"></gos-textbox>
+					<go-textbox [(isValid)]="isValidFlag" defaultValue="1111.22" type="number" label="Number Box" gosId="number_box" colorTheme="warning" placeholder="0-9"></go-textbox>
 					<p>is valid number: {{isValidFlag}}</p>
 				</div>
 				<div class="col-md-9">
@@ -160,7 +160,7 @@
 					</div>
 					<div id="collapse_ex_4" class="collapse" role="tabpanel" aria-labelledby="ex_4">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox defaultValue="1111.22" type="number" label="Number Box" gosId="number_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/gos-textbox&gt;</code><br>
+							<code>&lt;go-textbox defaultValue="1111.22" type="number" label="Number Box" gosId="number_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/go-textbox&gt;</code><br>
 							<code>is valid number: {{isValidFlagText}}</code>
 							<p></p>
 							<p></p>
@@ -172,7 +172,7 @@
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox type="email" label="Email Box" gosId="email_1" placeholder="example@host.com" warningText=""></gos-textbox>
+					<go-textbox type="email" label="Email Box" gosId="email_1" placeholder="example@host.com" warningText=""></go-textbox>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_5">
@@ -184,14 +184,14 @@
 					</div>
 					<div id="collapse_ex_5" class="collapse" role="tabpanel" aria-labelledby="ex_5">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox type="email" label="Email Box" gosId="email_1" placeholder="example@host.com" warningText=""&gt;&lt;/gos-textbox&gt;</code>
+							<code>&lt;go-textbox type="email" label="Email Box" gosId="email_1" placeholder="example@host.com" warningText=""&gt;&lt;/go-textbox&gt;</code>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox [(isValid)]="isValidCustomFlag" type="password" label="Custom Validate Password" gosId="custom_validate" [customRegExp]="regExp"></gos-textbox>
+					<go-textbox [(isValid)]="isValidCustomFlag" type="password" label="Custom Validate Password" gosId="custom_validate" [customRegExp]="regExp"></go-textbox>
 					<p>is valid password: {{isValidCustomFlag}}</p>
 				</div>
 				<div class="col-md-9">
@@ -204,7 +204,7 @@
 					</div>
 					<div id="collapse_ex_6" class="collapse" role="tabpanel" aria-labelledby="ex_6">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox [(isValid)]="isValidCustomFlag" type="password" label="Custom Validate" gosId="custom_validate" [customRegExp]="regExp"&gt;&lt;/gos-textbox&gt;</code>
+							<code>&lt;go-textbox [(isValid)]="isValidCustomFlag" type="password" label="Custom Validate" gosId="custom_validate" [customRegExp]="regExp"&gt;&lt;/go-textbox&gt;</code>
 							<code>is valid password: {{isValidCustomFlagText}}</code>
 							<p></p>
 							<p></p>
@@ -217,7 +217,7 @@
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox [(defaultValue)]="userName" type="text" label="Get value from textbox" require="true" gosId="textbox_3" colorTheme="danger"></gos-textbox>
+					<go-textbox [(defaultValue)]="userName" type="text" label="Get value from textbox" require="true" gosId="textbox_3" colorTheme="danger"></go-textbox>
 					value return: {{userName}}
 				</div>
 				<div class="col-md-9">
@@ -230,7 +230,7 @@
 					</div>
 					<div id="collapse_ex_7" class="collapse" role="tabpanel" aria-labelledby="ex_7">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox [(defaultValue)]="userName" type="text" label="Get value from textbox" require="true" gosId="textbox_3" colorTheme="danger"&gt;&lt;/gos-textbox&gt;</code><br>
+							<code>&lt;go-textbox [(defaultValue)]="userName" type="text" label="Get value from textbox" require="true" gosId="textbox_3" colorTheme="danger"&gt;&lt;/go-textbox&gt;</code><br>
 							<code>value return: {{paramText}}</code>
 							<p></p>
 							<p></p>
@@ -242,7 +242,7 @@
 			</div><br>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox disable="true" [(defaultValue)]="userName" type="text" label="Disable" require="true" gosId="textbox_4" colorTheme="danger"></gos-textbox>
+					<go-textbox disable="true" [(defaultValue)]="userName" type="text" label="Disable" require="true" gosId="textbox_4" colorTheme="danger"></go-textbox>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_8">
@@ -254,14 +254,14 @@
 					</div>
 					<div id="collapse_ex_8" class="collapse" role="tabpanel" aria-labelledby="ex_8">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox disable="true" [(defaultValue)]="userName" type="text" label="Disable" require="true" gosId="textbox_4" colorTheme="danger"&gt;&lt;/gos-textbox&gt;</code><br>
+							<code>&lt;go-textbox disable="true" [(defaultValue)]="userName" type="text" label="Disable" require="true" gosId="textbox_4" colorTheme="danger"&gt;&lt;/go-textbox&gt;</code><br>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<gos-textbox readonly="true" [(defaultValue)]="userName" type="text" label="ReadOnly" require="true" gosId="textbox_2" colorTheme="success"></gos-textbox>
+					<go-textbox readonly="true" [(defaultValue)]="userName" type="text" label="ReadOnly" require="true" gosId="textbox_2" colorTheme="success"></go-textbox>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_9">
@@ -273,7 +273,7 @@
 					</div>
 					<div id="collapse_ex_9" class="collapse" role="tabpanel" aria-labelledby="ex_9">
 						<div class="jumbotron">
-							<code>&lt;gos-textbox readonly="true" [(defaultValue)]="userName" type="text" label="ReadOnly" require="true" gosId="textbox_2" colorTheme="success"&gt;&lt;/gos-textbox&gt;</code><br>
+							<code>&lt;go-textbox readonly="true" [(defaultValue)]="userName" type="text" label="ReadOnly" require="true" gosId="textbox_2" colorTheme="success"&gt;&lt;/go-textbox&gt;</code><br>
 						</div>
 					</div>
 				</div>

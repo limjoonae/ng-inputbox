@@ -5,16 +5,17 @@ import { TooltipModule } from 'ng2-bootstrap';
 import { TextboxComponent } from './component/textbox.component';
 import { TransformService } from './component/transform.service';
 import { ValidationService } from './component/validation.service';
-import { BootstrapClassService, CommonService } from 'gos-service';
-import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective, CustomRequiredDirective } from 'gos-directive';
+import { LabelComponent } from 'go-label';
+import { BootstrapClassService, CommonService } from 'go-service';
+import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective } from 'go-directive';
 
 @NgModule({
   imports: [CommonModule,TooltipModule.forRoot()],
   declarations: [
-    TextboxComponent,
-    CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective, CustomRequiredDirective,
+    TextboxComponent, LabelComponent,
+    CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective
   ],
-  exports: [TextboxComponent]
+  exports: [TextboxComponent, LabelComponent]
 })
 export class TextboxModule {
   static forRoot(): ModuleWithProviders {

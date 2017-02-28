@@ -4,3 +4,4 @@ component/*.js
 component/*.js.map
 test/*.js
 test/*.js.map
+textbox.module.js*

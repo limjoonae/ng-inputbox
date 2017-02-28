@@ -26,24 +26,29 @@ const ATTRIBUTELIST: Array<any> = [
 ];
 const SYSTEMJSLINE: Array<any> = [
     `map: {`,
-    ` 'gos-textbox': 'gos:textbox/{version}',`,
-    ` 'gos-service': 'gos:service/{version}',`,
-    ` 'gos-directive': 'gos:directive/{version}',`,
+    ` 'go-textbox': 'gos:textbox/{version}',`,
+    ` 'go-label': 'gos:label/{version}',`,
+    ` 'go-service': 'gos:service/{version}',`,
+    ` 'go-directive': 'gos:directive/{version}',`,
     ` 'moment': 'npm:moment',`,
     ` 'ng2-bootstrap':'npm:ng2-bootstrap/bundles/ng2-bootstrap.umd.js',`,
     ` 'numeral': 'npm:numeral/numeral.js',`,
     `},`,
     ``,
     `packages: {`,
-    ` 'gos-textbox': {`,
+    ` 'go-textbox': {`,
     `    main: './textbox.module.js',`,
     `    defaultExtension: 'js'`,
     `  },`,    
-    ` 'gos-service': {`,
+    ` 'go-label': {`,
+    `    main: './label.js',`,
+    `    defaultExtension: 'js'`,
+    `  },`,    
+    ` 'go-service': {`,
     `    main: './index.js',`,
     `    defaultExtension: 'js'`,
     `  },`,  
-    ` 'gos-directive': {`,
+    ` 'go-directive': {`,
     `    main: './index.js',`,
     `    defaultExtension: 'js'`,
     `  },`,    
@@ -66,7 +71,7 @@ const TYPELIST: Array<any> = [
 ];
 
 const APPMODULELINE: Array<any> = [
-    `import { TextboxModule } from 'gos-textbox';`,
+    `import { TextboxModule } from 'go-textbox';`,
     ``,
     `@NgModule({`,
     `   imports: [`,
@@ -83,14 +88,14 @@ const APPMODULELINE: Array<any> = [
 })
 export class TextboxDocument implements OnInit {
 
-  private componentTag: string = '<gos-textbox>';
+  private componentTag: string = '<go-textbox>';
   private componentDescription: string = `Text box ใช้ในการรับค่าและแสดงผลข้อมูลตามประเภทต่างๆ`;
   private version: string = '1.0';
   private releaseDate: string = '10/02/2017';
-  private prefixSyntax: string = `<gos-textbox `;
+  private prefixSyntax: string = `<go-textbox `;
   private attrSyntax: string = `id="textbox _id" name=" textbox _name" type="type_name" [ defaultValue="text" or [(defaultValue)]="default_value_parameter" ]
                                             [format="format_pattern"] [label="label_name"] [require="true_or_false"] [disable="true_or_false"] [readonly="true_or_false"] [maxlength="number"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
-  private suffixSyntax: string = `></gos-textbox>`;
+  private suffixSyntax: string = `></go-textbox>`;
   private attributeList = ATTRIBUTELIST;
   private systemjsLine = SYSTEMJSLINE;
   private appModuleLine = APPMODULELINE;
