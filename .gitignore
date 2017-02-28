@@ -1,0 +1,6 @@
+doc/*.js
+doc/*.js.map
+component/*.js
+component/*.js.map
+test/*.js
+test/*.js.map
