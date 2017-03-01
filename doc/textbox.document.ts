@@ -102,8 +102,12 @@ export class TextboxDocument implements OnInit {
   private typeList = TYPELIST;
   private typeDescription = 'รายละเอียดของ text box ใน type ต่างๆดังต่อไปนี้';
   private numeralJSVersion = '2.0.4';
+  private cdn_url: string = 'http://10.182.247.173/gos-cdn/font-awesome/';
+  private fontAwesomeVersion = '4.7.0';
+  private htmlImport = `<link href="` + this.cdn_url + this.fontAwesomeVersion + `/css/font-awesome.min.css rel="stylesheet" type="text/css">`;
+  private cssImport = `@import url('` + this.cdn_url + this.fontAwesomeVersion + `/css/font-awesome.min.css');`;
+  
   private regExp = /^[a-zA-Z0-9]{8}$/g;
-
   paramText = '{{userName}}';
   myInteger = 1111;
   myNumber = 1111.22;
