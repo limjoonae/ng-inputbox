@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 const ATTRIBUTELIST: Array<any> = [
-    { require: '*', name: 'gosId', type: 'text', description: `ใช้ระบุ id ของ textbox`},
-    { require: '*', name: 'gosName', type: 'text', description: `ใช้ระบุ name ของ textbox`},
+    { require: '*', name: 'goId', type: 'text', description: `ใช้ระบุ id ของ textbox`},
+    { require: '*', name: 'goName', type: 'text', description: `ใช้ระบุ name ของ textbox`},
     { require: '*', name: 'type', type: 'text', description: `ใช้ระบุประเภทข้อมูลของ textbox ประกอบด้วย
         text, password, integer, number, email, hidden`},
     { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดค่าที่ต้องการรับ-ส่ง ใน textbox และสามารถนำไปใช้ต่อได้`},
@@ -26,10 +26,10 @@ const ATTRIBUTELIST: Array<any> = [
 ];
 const SYSTEMJSLINE: Array<any> = [
     `map: {`,
-    ` 'go-textbox': 'gos:textbox/{version}',`,
-    ` 'go-label': 'gos:label/{version}',`,
-    ` 'go-service': 'gos:service/{version}',`,
-    ` 'go-directive': 'gos:directive/{version}',`,
+    ` 'go-textbox': 'go:textbox/{version}',`,
+    ` 'go-label': 'go:label/{version}',`,
+    ` 'go-service': 'go:service/{version}',`,
+    ` 'go-directive': 'go:directive/{version}',`,
     ` 'moment': 'npm:moment',`,
     ` 'ng2-bootstrap':'npm:ng2-bootstrap/bundles/ng2-bootstrap.umd.js',`,
     ` 'numeral': 'npm:numeral/numeral.js',`,

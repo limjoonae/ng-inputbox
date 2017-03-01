@@ -12,16 +12,23 @@ import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirect
 @NgModule({
   imports: [CommonModule,TooltipModule.forRoot()],
   declarations: [
-    TextboxComponent, LabelComponent,
+    TextboxComponent, 
+    LabelComponent,
     CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective
   ],
-  exports: [TextboxComponent, LabelComponent]
+  exports: [
+    TextboxComponent, 
+    LabelComponent
+  ]
 })
 export class TextboxModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: TextboxModule,
-      providers: [ TransformService, ValidationService, BootstrapClassService, CommonService]
+      providers: [ 
+        TransformService, ValidationService, 
+        BootstrapClassService, CommonService
+      ]
     }
   }
 }
