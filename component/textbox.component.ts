@@ -7,6 +7,7 @@ import { TransformService } from './transform.service';
   moduleId: module.id,
   selector: 'go-textbox',
   templateUrl: './textbox.component.html',
+  styles: [`i.textbox-warning{margin-left:0.25rem;cursor:help;color:#ffa500;}`],
   providers: [BootstrapClassService, CommonService, ValidationService, TransformService]
 })
 export class TextboxComponent implements OnInit {

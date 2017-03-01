@@ -1,6 +1,6 @@
 <span *ngIf="type != 'hidden'">
 	<go-label [label]="label" [forId]="goId" [require]="require"></go-label>
-	<span style="margin-left: 0.25rem; cursor:help;"><i *ngIf="warningMsgReturn != '' && warningMsgReturn != null" class="fa fa-exclamation-triangle" style="color: #ffa500;" [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="right"></i></span>
+	<i *ngIf="warningMsgReturn != '' && warningMsgReturn != null" class="fa fa-exclamation-triangle textbox-warning" [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="right"></i>
 	<span *ngIf="require == 'true'">
 		<input ngModel ngDefaultControl required *ngIf="type == 'text'" #input class="form-control {{colorClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
