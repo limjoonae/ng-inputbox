@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 const ATTRIBUTELIST: Array<any> = [
-    { require: '*', name: 'goId', type: 'text', description: `ใช้ระบุ id ของ textbox`},
-    { require: '*', name: 'goName', type: 'text', description: `ใช้ระบุ name ของ textbox`},
+    { require: '*', name: 'gosId', type: 'text', description: `ใช้ระบุ id ของ textbox`},
+    { require: '*', name: 'gosName', type: 'text', description: `ใช้ระบุ name ของ textbox`},
     { require: '*', name: 'type', type: 'text', description: `ใช้ระบุประเภทข้อมูลของ textbox ประกอบด้วย
         text, password, integer, number, email, hidden`},
     { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดค่าที่ต้องการรับ-ส่ง ใน textbox และสามารถนำไปใช้ต่อได้`},
@@ -26,38 +26,33 @@ const ATTRIBUTELIST: Array<any> = [
 ];
 const SYSTEMJSLINE: Array<any> = [
     `map: {`,
-    ` 'go-textbox': 'go:textbox/{version}',`,
-    ` 'go-label': 'go:label/{version}',`,
-    ` 'go-service': 'go:service/{version}',`,
-    ` 'go-directive': 'go:directive/{version}',`,
-    ` 'moment': 'npm:moment',`,
-    ` 'ng2-bootstrap':'npm:ng2-bootstrap/bundles/ng2-bootstrap.umd.js',`,
     ` 'numeral': 'npm:numeral/numeral.js',`,
+    ` 'gos-textbox': 'gos:textbox/{version}',`,
+    ` 'gos-label': 'gos:label/{version}',`,
+    ` 'gos-service': 'gos:service/{version}',`,
+    ` 'gos-directive': 'gos:directive/{version}',`,
     `},`,
     ``,
     `packages: {`,
-    ` 'go-textbox': {`,
-    `    main: './textbox.module.js',`,
+    ` 'gos-textbox': {`,
+    `    main: './textbox.js',`,
     `    defaultExtension: 'js'`,
-    `  },`,    
-    ` 'go-label': {`,
+    `  },`,   
+    ` 'gos-label': {`,
     `    main: './label.js',`,
     `    defaultExtension: 'js'`,
-    `  },`,    
-    ` 'go-service': {`,
+    `  },`,   
+    `}`,   
+    ` 'gos-directive': {`,
     `    main: './index.js',`,
     `    defaultExtension: 'js'`,
-    `  },`,  
-    ` 'go-directive': {`,
+    `  },`,   
+    `}`,   
+    ` 'gos-service': {`,
     `    main: './index.js',`,
     `    defaultExtension: 'js'`,
-    `  },`,    
-    ` 'moment': {`,
-    `      main: './moment.js',`,
-    `      defaultExtension: 'js'`,
-    `   },`, 
-    `}`, 
-
+    `  },`,   
+    `}`,   
     
 ];
 
@@ -71,12 +66,16 @@ const TYPELIST: Array<any> = [
 ];
 
 const APPMODULELINE: Array<any> = [
-    `import { TextboxModule } from 'go-textbox';`,
+    `import { textboxComponent } from 'gos-textbox';`,
+    `import { LabelComponent } from 'gos-label';`,
+    `import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective } from 'gos-directive';`,
     ``,
     `@NgModule({`,
-    `   imports: [`,
+    `   declarations: [`,
     `   ..........`,
-    `   TextboxModule.forRoot(),`,
+    `   textboxComponent,`,
+    `   LabelComponent,`,
+    `   CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective,`,
     `   ..........`,
     `],`,
 ];
@@ -84,30 +83,26 @@ const APPMODULELINE: Array<any> = [
 @Component({
   moduleId: module.id,
   selector: 'textbox-document',
-  templateUrl: './textbox.document.html'
+  templateUrl: './textbox.document.html',
 })
 export class TextboxDocument implements OnInit {
 
-  private componentTag: string = '<go-textbox>';
+  private componentTag: string = '<gos-textbox>';
   private componentDescription: string = `Text box ใช้ในการรับค่าและแสดงผลข้อมูลตามประเภทต่างๆ`;
   private version: string = '1.0';
   private releaseDate: string = '10/02/2017';
-  private prefixSyntax: string = `<go-textbox `;
+  private prefixSyntax: string = `<gos-textbox `;
   private attrSyntax: string = `id="textbox _id" name=" textbox _name" type="type_name" [ defaultValue="text" or [(defaultValue)]="default_value_parameter" ]
                                             [format="format_pattern"] [label="label_name"] [require="true_or_false"] [disable="true_or_false"] [readonly="true_or_false"] [maxlength="number"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
-  private suffixSyntax: string = `></go-textbox>`;
+  private suffixSyntax: string = `></gos-textbox>`;
   private attributeList = ATTRIBUTELIST;
   private systemjsLine = SYSTEMJSLINE;
   private appModuleLine = APPMODULELINE;
   private typeList = TYPELIST;
   private typeDescription = 'รายละเอียดของ text box ใน type ต่างๆดังต่อไปนี้';
   private numeralJSVersion = '2.0.4';
-  private cdn_url: string = 'http://10.182.247.173/gos-cdn/font-awesome/';
-  private fontAwesomeVersion = '4.7.0';
-  private htmlImport = `<link href="` + this.cdn_url + this.fontAwesomeVersion + `/css/font-awesome.min.css rel="stylesheet" type="text/css">`;
-  private cssImport = `@import url('` + this.cdn_url + this.fontAwesomeVersion + `/css/font-awesome.min.css');`;
-  
   private regExp = /^[a-zA-Z0-9]{8}$/g;
+
   paramText = '{{userName}}';
   myInteger = 1111;
   myNumber = 1111.22;

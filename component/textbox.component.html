@@ -1,28 +1,36 @@
 <span *ngIf="type != 'hidden'">
-	<go-label [label]="label" [forId]="goId" [require]="require"></go-label>
+	<go-label [label]="label" [require]="require"></go-label>
 	<i *ngIf="warningMsgReturn != '' && warningMsgReturn != null" class="fa fa-exclamation-triangle textbox-warning" [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="right"></i>
 	<span *ngIf="require == 'true'">
-		<input ngModel ngDefaultControl required *ngIf="type == 'text'" #input class="form-control {{colorClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+		<input *ngIf="type == 'text'" #input class="form-control {{colorClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
-		<input ngModel ngDefaultControl required *ngIf="type == 'password'" #input class="form-control {{colorClass}}" type="password" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+
+		<input *ngIf="type == 'password'" #input class="form-control {{colorClass}}" type="password" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
-		<input ngModel ngDefaultControl required *ngIf="type == 'integer'" #input class="form-control {{colorClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
+
+		<input *ngIf="type == 'integer'" #input class="form-control {{colorClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
 			[customReadonly]="readonly" type="number" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateInteger(input.value)">
-		<input ngModel ngDefaultControl required *ngIf="type == 'number'" #input class="form-control {{colorClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+
+		<input *ngIf="type == 'number'" #input class="form-control {{colorClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			type="currency" [value]="defaultValue" (focus)="clearFormat(input.value)" (blur)="defaultValue = numberWithFormat" (keyup)="validateNumber(input.value)">
-		<input ngModel ngDefaultControl required *ngIf="type == 'email'" #input class="form-control {{colorClass}} fa fa-exclamation-triangle" type="email" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
+
+		<input *ngIf="type == 'email'" #input class="form-control {{colorClass}}" type="email" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
 			[customReadonly]="readonly" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateEmail(input.value)">
 	</span>
 	<span *ngIf="require != 'true'">
-		<input ngModel ngDefaultControl *ngIf="type == 'text'" #input class="form-control {{colorClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+		<input *ngIf="type == 'text'" #input class="form-control {{colorClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
-		<input ngModel ngDefaultControl *ngIf="type == 'password'" #input class="form-control {{colorClass}}" type="password" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+
+		<input *ngIf="type == 'password'" #input class="form-control {{colorClass}}" type="password" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
-		<input ngModel ngDefaultControl *ngIf="type == 'integer'" #input class="form-control {{colorClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
+
+		<input *ngIf="type == 'integer'" #input class="form-control {{colorClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
 			[customReadonly]="readonly" type="number" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateInteger(input.value)">
-		<input ngModel ngDefaultControl *ngIf="type == 'number'" #input class="form-control {{colorClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+
+		<input *ngIf="type == 'number'" #input class="form-control {{colorClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			type="currency" [value]="defaultValue" (focus)="clearFormat(input.value)" (blur)="defaultValue = numberWithFormat" (keyup)="validateNumber(input.value)">
-		<input ngModel ngDefaultControl *ngIf="type == 'email'" #input class="form-control {{colorClass}} fa fa-exclamation-triangle" type="email" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
+
+		<input *ngIf="type == 'email'" #input class="form-control {{colorClass}}" type="email" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
 			[customReadonly]="readonly" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateEmail(input.value)">
 	</span>
 </span>
