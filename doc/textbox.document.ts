@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 const ATTRIBUTELIST: Array<any> = [
-    { require: '*', name: 'gosId', type: 'text', description: `ใช้ระบุ id ของ textbox`},
-    { require: '*', name: 'gosName', type: 'text', description: `ใช้ระบุ name ของ textbox`},
+    { require: '*', name: 'goId', type: 'text', description: `ใช้ระบุ id ของ textbox`},
+    { require: '*', name: 'goName', type: 'text', description: `ใช้ระบุ name ของ textbox`},
     { require: '*', name: 'type', type: 'text', description: `ใช้ระบุประเภทข้อมูลของ textbox ประกอบด้วย
         text, password, integer, number, email, hidden`},
-    { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดค่าที่ต้องการรับ-ส่ง ใน textbox และสามารถนำไปใช้ต่อได้`},
+    { require: '', name: 'hiddenLabel', type: 'boolean', description: `ใช้ระบุว่าจะให้ซ่อน label หรือไม่มีค่า default เป็น false`},
+    { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดค่าที่ต้องการรับ-ส่ง ใน textbox และสามารถนำไปใช้ต่อได้ หากต้องการให้เป็นตัวแปรแบบรับส่งค่าได้ ให้ระบุภายในเครื่องหมาย banana ดังตัวอย่าง [(defaultValue)]="parameterName"`},
     { require: '', name: 'isValid', type: 'boolean', description: `ใช้รับ-ส่งผลของการ validate หากข้อมูลใน textbox ถูกต้อง จะส่งค่ากลับเป็น true หากไม่ถูกต้อง ส่งค่ากลับเป็น false`},
     { require: '', name: 'numberFormat', type: 'format', description: `ใช้กำหนด format การแสดงตัวเลขของ textbox type="number"`},
     { require: '', name: 'label', type: 'text', description: `ใช้สำหรับใส่ข้อความใน label ของ text box`},
@@ -27,14 +28,14 @@ const ATTRIBUTELIST: Array<any> = [
 const SYSTEMJSLINE: Array<any> = [
     `map: {`,
     ` 'numeral': 'npm:numeral/numeral.js',`,
-    ` 'gos-textbox': 'gos:textbox/{version}',`,
+    ` 'go-textbox': 'gos:textbox/{version}',`,
     ` 'gos-label': 'gos:label/{version}',`,
     ` 'gos-service': 'gos:service/{version}',`,
     ` 'gos-directive': 'gos:directive/{version}',`,
     `},`,
     ``,
     `packages: {`,
-    ` 'gos-textbox': {`,
+    ` 'go-textbox': {`,
     `    main: './textbox.js',`,
     `    defaultExtension: 'js'`,
     `  },`,   
@@ -66,7 +67,7 @@ const TYPELIST: Array<any> = [
 ];
 
 const APPMODULELINE: Array<any> = [
-    `import { textboxComponent } from 'gos-textbox';`,
+    `import { textboxComponent } from 'go-textbox';`,
     `import { LabelComponent } from 'gos-label';`,
     `import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective } from 'gos-directive';`,
     ``,
@@ -87,14 +88,14 @@ const APPMODULELINE: Array<any> = [
 })
 export class TextboxDocument implements OnInit {
 
-  private componentTag: string = '<gos-textbox>';
+  private componentTag: string = '<go-textbox>';
   private componentDescription: string = `Text box ใช้ในการรับค่าและแสดงผลข้อมูลตามประเภทต่างๆ`;
   private version: string = '1.0';
   private releaseDate: string = '10/02/2017';
-  private prefixSyntax: string = `<gos-textbox `;
-  private attrSyntax: string = `id="textbox _id" name=" textbox _name" type="type_name" [ defaultValue="text" or [(defaultValue)]="default_value_parameter" ]
-                                            [format="format_pattern"] [label="label_name"] [require="true_or_false"] [disable="true_or_false"] [readonly="true_or_false"] [maxlength="number"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
-  private suffixSyntax: string = `></gos-textbox>`;
+  private prefixSyntax: string = `<go-textbox `;
+  private attrSyntax: string = `goId="textbox _id" goName="textbox _name" type="type_name" [hiddenLabel="true"] [ defaultValue="text" or [(defaultValue)]="default_value_parameter" ]
+                                            [format="format_pattern"] [label="label_name"] [require="true"] [disable="true"] [readonly="true"] [maxlength="number"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
+  private suffixSyntax: string = `></go-textbox>`;
   private attributeList = ATTRIBUTELIST;
   private systemjsLine = SYSTEMJSLINE;
   private appModuleLine = APPMODULELINE;
