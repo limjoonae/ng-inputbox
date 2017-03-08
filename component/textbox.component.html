@@ -1,5 +1,6 @@
 <span *ngIf="type != 'hidden'">
-	<go-label [label]="label" [require]="require"></go-label>
+	<go-label *ngIf="hiddenLabel != 'true'" [label]="label" [require]="require" ></go-label>
+	<label *ngIf="hiddenLabel == 'true'" class="sr-only">{{label}}</label>
 	<i *ngIf="warningMsgReturn != '' && warningMsgReturn != null" class="fa fa-exclamation-triangle textbox-warning" [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="right"></i>
 	<span *ngIf="require == 'true'">
 		<input *ngIf="type == 'text'" #input class="form-control {{colorClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
