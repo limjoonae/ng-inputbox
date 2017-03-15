@@ -1,37 +1,36 @@
 <span *ngIf="type != 'hidden'" class="form-group {{hasClass}}">
 	<go-label *ngIf="hiddenLabel != 'true'" [label]="label" [require]="require" ></go-label>
 	<label *ngIf="hiddenLabel == 'true'" class="sr-only">{{label}}</label>
-	<i *ngIf="warningMsgReturn != '' && warningMsgReturn != null" class="fa fa-exclamation-triangle textbox-warning" [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="right"></i>
 	<span *ngIf="require == 'true'">
-		<input *ngIf="type == 'text'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'text'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
 
-		<input *ngIf="type == 'password'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="password" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'password'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="password" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
 
-		<input *ngIf="type == 'integer'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'integer'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
 			[customReadonly]="readonly" type="number" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateInteger(input.value)">
 
-		<input *ngIf="type == 'number'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'number'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			type="currency" [value]="defaultValue" (focus)="clearFormat(input.value)" (blur)="defaultValue = numberWithFormat" (keyup)="validateNumber(input.value)">
 
-		<input *ngIf="type == 'email'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="email" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'email'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="email" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
 			[customReadonly]="readonly" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateEmail(input.value)">
 	</span>
 	<span *ngIf="require != 'true'">
-		<input *ngIf="type == 'text'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'text'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
 
-		<input *ngIf="type == 'password'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="password" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'password'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="password" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
 
-		<input *ngIf="type == 'integer'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'integer'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
 			[customReadonly]="readonly" type="number" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateInteger(input.value)">
 
-		<input *ngIf="type == 'number'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'number'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			type="currency" [value]="defaultValue" (focus)="clearFormat(input.value)" (blur)="defaultValue = numberWithFormat" (keyup)="validateNumber(input.value)">
 
-		<input *ngIf="type == 'email'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="email" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
+		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'email'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="email" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable"
 			[customReadonly]="readonly" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateEmail(input.value)">
 	</span>
 </span>
