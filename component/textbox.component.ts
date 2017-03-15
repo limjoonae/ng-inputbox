@@ -36,6 +36,8 @@ export class TextboxComponent implements OnInit {
   public warningMsgReturn: string;
   public warningMsg: string;
   public space = ' ';
+  public hasClass = '';
+  public hasFormControlClass = '';
 
   constructor(
     private _bootstrapClassService: BootstrapClassService,
