@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BootstrapClassService, CommonService } from 'go-service';
+import { BootstrapClassService, CommonService } from '../../go-service/component/index';
 import { ValidationService } from './validation.service';
 import { TransformService } from './transform.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'go-textbox',
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.css'],
