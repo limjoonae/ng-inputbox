@@ -147,7 +147,7 @@
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<go-textbox [(isValid)]="isValidFlag" defaultValue="1111.22" type="number" label="Number Box" goId="number_box" colorTheme="warning" placeholder="0-9"></go-textbox>
+					<go-textbox [(isValid)]="isValidFlag" [(defaultValue)]="myNumber" type="number" label="Number Box" goId="number_box" colorTheme="warning" placeholder="0-9"></go-textbox>
 					<p>is valid number: {{isValidFlag}}</p>
 				</div>
 				<div class="col-md-9">

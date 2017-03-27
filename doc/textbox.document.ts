@@ -82,7 +82,6 @@ const APPMODULELINE: Array<any> = [
 ];
 
 @Component({
-  moduleId: module.id,
   selector: 'textbox-document',
   templateUrl: './textbox.document.html',
 })
