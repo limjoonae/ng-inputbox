@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
+const numeral = require('numeral');
 
 @Injectable()
 export class TransformService {
-
-  private numeral = require('numeral');
 
   constructor() { }
 
@@ -11,16 +10,16 @@ export class TransformService {
     let defaultFormat = '0,0.00';
     if(value != '')
       if(customFormat == null || customFormat == ''){
-        return this.numeral(value).format(defaultFormat);
+        return numeral(value).format(defaultFormat);
       } else {
-        return this.numeral(value).format(customFormat);
+        return numeral(value).format(customFormat);
       }
     return '';
   }
 
   toIntegerFormat(value: string): string {
     if(value != '')
-      return this.numeral(value).format('0');
+      return numeral(value).format('0');
     return '';
   }
 
