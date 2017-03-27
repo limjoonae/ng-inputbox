@@ -121,6 +121,7 @@ export class TextboxComponent implements OnInit {
     let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
     this.warningMsgReturn = this.returnWarningMessage(isValid);
     this.setValidationStyle(isValid);
+    isValid ? this.numberWithFormat = this.getNumberFormat(value) : this.numberWithFormat = value; 
     this.defaultValueChange.emit(value);
     this.isValidChange.emit(isValid);
   }
