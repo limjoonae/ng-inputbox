@@ -1,0 +1,283 @@
+<ul class="nav nav-tabs" role="tablist">
+	<li class="nav-item"><a class="nav-link active" href="#Overview"
+		role="tab" data-toggle="tab">Overview</a></li>
+	<li class="nav-item"><a class="nav-link" href="#Document" role="tab"
+		data-toggle="tab">Document</a></li>
+	<li class="nav-item"><a class="nav-link" href="#Example" role="tab"
+		data-toggle="tab">Example</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+	<div role="tabpanel" class="tab-pane fade in active" id="Overview">
+		<div class="jumbotron">
+			<h2>Component {{componentTag}}</h2><br>
+			<div class="row">
+				<div class="col-md-6">
+					<strong>Description</strong>
+					<p>{{componentDescription}}</p>
+				</div>
+				<div class="col-md-6">
+					<p><strong>Version: {{version}}</strong>
+					</p>
+					<p><strong>Release Date: {{releaseDate}}</strong>
+					</p>
+					<p><strong>Credit: -</strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+  	<div role="tabpanel" class="tab-pane fade" id="Document">
+		<div class="jumbotron">
+			<h2>Syntax</h2>
+			<!--<small>[  ] = optional attribute</small>-->
+			<code>{{prefixSyntax}}<em>{{attrSyntax}}</em>{{suffixSyntax}}</code>
+		</div>
+		<div class="jumbotron">
+			<h2>Attributes</h2>
+			<small>* = require</small>
+			<table class="table">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Attribute</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let attribute of attributeList">
+						<th scope="row">{{attribute.require}}</th>
+						<td>{{attribute.name}}</td>
+						<td><em>{{attribute.type}}</em></td>
+						<td>{{attribute.description}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="jumbotron">
+			<h2>Types</h2>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{typeDescription}}</p>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let type of typeList">
+						<td>{{type.type}}</td>
+						<td>{{type.description}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="jumbotron">
+			<h2>Number Format</h2>
+			<p>เลือกใช้ format ได้จาก <strong><em><a href="http://numeraljs.com/" target="_blank">Numeral.js</a></em></strong> (อ้างอิงเวอร์ชั่น <strong>{{numeralJSVersion}})</strong></p>
+		</div>
+		<div class="jumbotron">
+			<h2>Getting Started</h2>
+			<p><li>systemjs.config.js</li></p>
+			<pre><code *ngFor="let line of systemjsLine">{{line}}<br></code></pre><br>
+			<p><li>app.module.ts</li></p>
+			<pre><code *ngFor="let line of appModuleLine">{{line}}<br></code></pre>
+		</div>
+	</div>
+	<div role="tabpanel" class="tab-pane fade" id="Example">
+		<!--<div class="container-fluid">-->
+		<div class="jumbotron">
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<go-textbox hiddenLabel="true" defaultValue="John" type="text" label="First Name" require="true" goId="textbox_1" colorTheme="success"></go-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_1">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_1" aria-expanded="false" aria-controls="collapse_ex_1">
+							Code Example#1
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_1" class="collapse" role="tabpanel" aria-labelledby="ex_1">
+						<div class="jumbotron">
+							<code>&lt;go-textbox defaultValue="John" type="text" label="First Name" require="true" goId="textbox_1" colorTheme="success"&gt;&lt;/go-textbox&gt;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<go-textbox maxlength="6" type="password" label="Password Box" goId="password_box" colorTheme="info" name="password_box"></go-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_2">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_2" aria-expanded="false" aria-controls="collapse_ex_2">
+							Code Example#2
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_2" class="collapse" role="tabpanel" aria-labelledby="ex_2">
+						<div class="jumbotron">
+							<code>&lt;go-textbox maxlength="6" type="password" label="Password Box" goId="password_box" colorTheme="info"&gt;&lt;/go-textbox&gt;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<go-textbox maxlength="6" defaultValue="1111" type="integer" label="Integer Box" goId="integer_box" colorTheme="warning" placeholder="0-9"></go-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_3">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_3" aria-expanded="false" aria-controls="collapse_ex_3">
+							Code Example#3
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_3" class="collapse" role="tabpanel" aria-labelledby="ex_3">
+						<div class="jumbotron">
+							<code>&lt;go-textbox maxlength="6" defaultValue="1111" type="number" label="Integer Box" goId="integer_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/go-textbox&gt;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<go-textbox [(isValid)]="isValidFlag" [(defaultValue)]="myNumber" type="number" label="Number Box" goId="number_box" colorTheme="warning" placeholder="0-9"></go-textbox>
+					<p>is valid number: {{isValidFlag}}</p>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_4">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_4" aria-expanded="false" aria-controls="collapse_ex_4">
+							Code Example#4
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_4" class="collapse" role="tabpanel" aria-labelledby="ex_4">
+						<div class="jumbotron">
+							<code>&lt;go-textbox defaultValue="1111.22" type="number" label="Number Box" goId="number_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/go-textbox&gt;</code><br>
+							<code>is valid number: {{isValidFlagText}}</code>
+							<p></p>
+							<p></p>
+							<p>component.ts</p>
+							<pre><code>isValidFlag: boolean;</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<go-textbox type="email" label="Email Box" goId="email_1" placeholder="example@host.com" warningText=""></go-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_5">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_5" aria-expanded="false" aria-controls="collapse_ex_5">
+							Code Example#5
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_5" class="collapse" role="tabpanel" aria-labelledby="ex_5">
+						<div class="jumbotron">
+							<code>&lt;go-textbox type="email" label="Email Box" goId="email_1" placeholder="example@host.com" warningText=""&gt;&lt;/go-textbox&gt;</code>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<go-textbox [(isValid)]="isValidCustomFlag" type="password" label="Custom Validate Password" goId="custom_validate" [customRegExp]="regExp"></go-textbox>
+					<p>is valid password: {{isValidCustomFlag}}</p>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_6">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_6" aria-expanded="false" aria-controls="collapse_ex_6">
+							Code Example#6
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_6" class="collapse" role="tabpanel" aria-labelledby="ex_6">
+						<div class="jumbotron">
+							<code>&lt;go-textbox [(isValid)]="isValidCustomFlag" type="password" label="Custom Validate" goId="custom_validate" [customRegExp]="regExp"&gt;&lt;/go-textbox&gt;</code>
+							<code>is valid password: {{isValidCustomFlagText}}</code>
+							<p></p>
+							<p></p>
+							<p>component.ts</p>
+							<pre><code>regExp = {{regExp}}</code></pre>
+							<pre><code>isValidCustomFlag: boolean;</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<go-textbox [(defaultValue)]="userName" type="text" label="Get value from textbox" require="true" goId="textbox_3" colorTheme="danger"></go-textbox>
+					value return: {{userName}}
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_7">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_7" aria-expanded="false" aria-controls="collapse_ex_7">
+							Code Example#7
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_7" class="collapse" role="tabpanel" aria-labelledby="ex_7">
+						<div class="jumbotron">
+							<code>&lt;go-textbox [(defaultValue)]="userName" type="text" label="Get value from textbox" require="true" goId="textbox_3" colorTheme="danger"&gt;&lt;/go-textbox&gt;</code><br>
+							<code>value return: {{paramText}}</code>
+							<p></p>
+							<p></p>
+							<p>component.ts</p>
+							<pre><code>userName: string = "John";</code></pre>
+						</div>
+					</div>
+				</div>
+			</div><br>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<go-textbox disable="true" [(defaultValue)]="userName" type="text" label="Disable" require="true" goId="textbox_4" colorTheme="danger"></go-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_8">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_8" aria-expanded="false" aria-controls="collapse_ex_8">
+							Code Example#8
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_8" class="collapse" role="tabpanel" aria-labelledby="ex_8">
+						<div class="jumbotron">
+							<code>&lt;go-textbox disable="true" [(defaultValue)]="userName" type="text" label="Disable" require="true" goId="textbox_4" colorTheme="danger"&gt;&lt;/go-textbox&gt;</code><br>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<go-textbox readonly="true" [(defaultValue)]="userName" type="text" label="ReadOnly" require="true" goId="textbox_2" colorTheme="success"></go-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_9">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_9" aria-expanded="false" aria-controls="collapse_ex_9">
+							Code Example#9
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_9" class="collapse" role="tabpanel" aria-labelledby="ex_9">
+						<div class="jumbotron">
+							<code>&lt;go-textbox readonly="true" [(defaultValue)]="userName" type="text" label="ReadOnly" require="true" goId="textbox_2" colorTheme="success"&gt;&lt;/go-textbox&gt;</code><br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
