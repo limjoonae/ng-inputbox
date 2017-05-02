@@ -1,6 +1,6 @@
 <span *ngIf="type != 'hidden'" class="form-group {{hasClass}}">
-	<go-label *ngIf="hiddenLabel != 'true'" [label]="label" [require]="require" ></go-label>
-	<label *ngIf="hiddenLabel == 'true'" class="sr-only">{{label}}</label>
+	<!--<go-label *ngIf="hiddenLabel != 'true'" [label]="label" [require]="require" ></go-label>
+	<label *ngIf="hiddenLabel == 'true'" class="sr-only">{{label}}</label>-->
 	<span *ngIf="require == 'true'">
 		<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'text'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="text" [id]="goId" [name]="goName" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
 			[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
