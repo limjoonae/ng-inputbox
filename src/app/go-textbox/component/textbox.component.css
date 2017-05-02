@@ -1,2 +1,6 @@
 i.textbox-warning{margin-left:0.25rem;cursor:help;color:#ffa500;}
 .has-warning .form-control-warning {background-image: none!important;border-right-width: thick!important;padding-right: 0.5rem!important;}
+.form-control{margin-bottom: 1rem;}
+.alert {
+    padding: .5rem .75rem;
+}
