@@ -5,13 +5,13 @@ const ATTRIBUTELIST: Array<any> = [
     { require: '*', name: 'goName', type: 'text', description: `ใช้ระบุ name ของ textbox`},
     { require: '*', name: 'type', type: 'text', description: `ใช้ระบุประเภทข้อมูลของ textbox ประกอบด้วย
         text, password, integer, number, email, hidden`},
-    { require: '', name: 'hiddenLabel', type: 'boolean', description: `ใช้ระบุว่าจะให้ซ่อน label หรือไม่มีค่า default เป็น false`},
+    // { require: '', name: 'hiddenLabel', type: 'boolean', description: `ใช้ระบุว่าจะให้ซ่อน label หรือไม่มีค่า default เป็น false`},
     { require: '', name: 'defaultValue', type: 'text', description: `ใช้กำหนดค่าที่ต้องการรับ-ส่ง ใน textbox และสามารถนำไปใช้ต่อได้ หากต้องการให้เป็นตัวแปรแบบรับส่งค่าได้ ให้ระบุภายในเครื่องหมาย banana ดังตัวอย่าง [(defaultValue)]="parameterName"`},
     { require: '', name: 'isValid', type: 'boolean', description: `ใช้รับ-ส่งผลของการ validate หากข้อมูลใน textbox ถูกต้อง จะส่งค่ากลับเป็น true หากไม่ถูกต้อง ส่งค่ากลับเป็น false`},
     { require: '', name: 'numberFormat', type: 'format', description: `ใช้กำหนด format การแสดงตัวเลขของ textbox type="number"`},
-    { require: '', name: 'label', type: 'text', description: `ใช้สำหรับใส่ข้อความใน label ของ text box`},
-    { require: '', name: 'require', type: 'boolean', description: `ใช้กับ text box ที่จำเป็นต้องระบุค่า โดย
-        หากระบุค่า require ="true" จะแสดง * หลัง label`},
+    // { require: '', name: 'label', type: 'text', description: `ใช้สำหรับใส่ข้อความใน label ของ text box`},
+    // { require: '', name: 'require', type: 'boolean', description: `ใช้กับ text box ที่จำเป็นต้องระบุค่า โดย
+    //     หากระบุค่า require ="true" จะแสดง * หลัง label`},
     { require: '', name: 'disable', type: 'boolean', description: `ใช้กำหนดเพื่อปิดใช้งาน textbox โดย
         หากระบุค่า disable="true" จะไม่สามารถใช้งานหรือ copy ข้อความใน textbox ได้`},
     { require: '', name: 'readonly', type: 'boolean', description: `ใช้กำหนดให้ไม่สามารถแก้ไขข้อมูลใน text box ได้`},
@@ -92,8 +92,8 @@ export class TextboxDocument implements OnInit {
   private version: string = '1.0';
   private releaseDate: string = '10/02/2017';
   private prefixSyntax: string = `<go-textbox `;
-  private attrSyntax: string = `goId="textbox _id" goName="textbox _name" type="type_name" [hiddenLabel="true"] [ defaultValue="text" or [(defaultValue)]="default_value_parameter" ]
-                                            [format="format_pattern"] [label="label_name"] [require="true"] [disable="true"] [readonly="true"] [maxlength="number"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
+  private attrSyntax: string = `goId="textbox _id" goName="textbox _name" type="type_name" [ defaultValue="text" or [(defaultValue)]="default_value_parameter" ]
+                                            [format="format_pattern"] [disable="true"] [readonly="true"] [maxlength="number"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
   private suffixSyntax: string = `></go-textbox>`;
   private attributeList = ATTRIBUTELIST;
   private systemjsLine = SYSTEMJSLINE;
