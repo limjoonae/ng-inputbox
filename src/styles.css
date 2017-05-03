@@ -1,5 +1,56 @@
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+body {color: #990000!important;}
+a, pre { color: #990000!important;}
+pre {background-color: rgb(247,247,249)!important;}
+.navbar-footer {border-color:#990000!important;}
+.jumbotron {background-color: #ffffff!important; padding: 2rem 2rem 0 2rem!important;}
+a { color: #990000!important;}
+a:focus, a:hover { color: #cc0000!important;}
+a.btn, a.btn:focus, a.btn:hover { color: #ffffff!important;}
+nav ul li.nav-item.active a.nav-link { font-weight: bold;}
+nav small#projectName, a.nav-link, a.dropdown-item { color: #990000!important;}
+a.nav-link:focus, a.nav-link:hover { color: #cc0000!important;}
+nav div.dropdown-menu, .card, .card-header, ul.nav.nav-tabs {border-color:#990000!important; }
+nav ul li div a.dropdown-item.active { background-color: #990000!important; color: #fff!important;}
+nav ul li div a.dropdown-item:hover {background-color: #ffe6e6!important; color: #990000!important;} 
+/*h3.card-header { color: #fff!important;}*/
+.card-header { color: #fff!important;background-color: #990000!important;}
+.nav-tabs .nav-item.open .nav-link, 
+.nav-tabs .nav-item.open .nav-link:focus, 
+.nav-tabs .nav-item.open .nav-link:hover, 
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, 
+.nav-tabs .nav-link.active:hover {
+    color: #fff!important;
+    background-color: #990000!important;
+    border-color:#990000!important;
+}
+.nav-link:focus, .nav-link:hover {border-color:#990000!important;}
+
+nav { margin-bottom: 1.25rem; }
+.card-block.component { height: 18rem; }
+.align-center { text-align: center; }
+.row.row-in-tab { margin-top: 1.25rem; }
+
+.nav-pills .nav-item.open .nav-link, 
+.nav-pills .nav-item.open .nav-link:focus, 
+.nav-pills .nav-item.open .nav-link:hover, 
+.nav-pills .nav-link.active, .nav-pills 
+.nav-link.active:focus, .nav-pills .nav-link.active:hover {
+    color: #fff!important;
+    background-color: #990000!important;
+    border-color:#990000!important;
+}
+
+/** available in bootstrap 4.0.0-alpha.6 **/
+.navbar-toggler-right {
+	position: absolute;
+	right: 1rem;
+}
+@media (min-width: 992px) { 
+#projectName{display:inline-block;}
+#navbarToggler{display:none;}
+#navbarSupportedContent {display:inline-block;}
+}
+@media (max-width: 990px) {
+#projectName{display:none;}
+#navbarToggler{display:block;}
 }
