@@ -15,8 +15,8 @@ export class TextboxComponent implements OnInit {
   @Input() goName: string;
   @Input() hiddenLabel: string;
   @Input() type: string;
-  @Input() label: string;
-  @Input() require: string;
+  // @Input() label: string;
+  // @Input() require: string;
   @Input() disable: string;
   @Input() readonly: string;
   @Input() maxlength: string;
