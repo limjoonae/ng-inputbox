@@ -83,7 +83,7 @@ const APPMODULELINE: Array<any> = [
 
 @Component({
   selector: 'textbox-document',
-  templateUrl: './textbox.document.html',
+  templateUrl: './textbox.document.html'
 })
 export class TextboxDocument implements OnInit {
 
