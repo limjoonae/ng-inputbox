@@ -36,7 +36,8 @@ const TYPELIST: Array<any> = [
 ];
 
 const _releaseUpdate: Array<any> = [
-  { head: `Label`, data: `ลบ label ออกจาก textbox เพื่อความยืดหยุ่นในการใช้งาน` },
+  { head: ``, data: `ลบ label ออกจาก textbox เพื่อความยืดหยุ่นในการใช้งาน` },
+  { head: ``, data: `ปรับลดความสูงของ textbox แบบมีสีให้เท่ากับ textbox แบบไม่มีสี` },
 ];
 
 @Component({
@@ -48,7 +49,7 @@ export class TextboxDocument implements OnInit {
   private componentTag: string = '<go-textbox>';
   private componentDescription: string = `Text box ใช้ในการรับค่าและแสดงผลข้อมูลตามประเภทต่างๆ`;
   private version: string = '2.0';
-  private releaseDate: string = '3/05/2017';
+  private releaseDate: string = '3 May 2017';
   private prefixSyntax: string = `<go-textbox `;
   private attrSyntax: string = `goId="textbox _id" goName="textbox _name" type="type_name" [ defaultValue="text" or [(defaultValue)]="default_value_parameter" ]
                                             [format="format_pattern"] [disable="true"] [readonly="true"] [maxlength="number"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
