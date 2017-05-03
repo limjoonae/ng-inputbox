@@ -23,7 +23,16 @@
 					<p><strong>Release Date: {{releaseDate}}</strong>
 					</p>
 					<p><strong>Credit: -</strong></p>
+					<div class="align-center"><a class="form-control btn btn-danger" href="http://10.182.247.74/go-webframework/go-textbox/issues" target="_blank">Report Issue</a></div>
 				</div>
+			</div>
+		</div>
+		<div class="jumbotron">
+			<div class="card-title">
+				<h3>Release Update</h3>
+			</div>
+			<div class="card-block">
+				<li *ngFor="let line of releaseUpdate"> <b> {{line.head}}</b>: {{line.data}} </li>	
 			</div>
 		</div>
 	</div>
@@ -77,13 +86,6 @@
 			<h2>Number Format</h2>
 			<p>เลือกใช้ format ได้จาก <strong><em><a href="http://numeraljs.com/" target="_blank">Numeral.js</a></em></strong> (อ้างอิงเวอร์ชั่น <strong>{{numeralJSVersion}})</strong></p>
 		</div>
-		<!--<div class="jumbotron">
-			<h2>Getting Started</h2>
-			<p><li>systemjs.config.js</li></p>
-			<pre><code *ngFor="let line of systemjsLine">{{line}}<br></code></pre><br>
-			<p><li>app.module.ts</li></p>
-			<pre><code *ngFor="let line of appModuleLine">{{line}}<br></code></pre>
-		</div>-->
 	</div>
 	<div role="tabpanel" class="tab-pane fade" id="Example">
 		<!--<div class="container-fluid">-->

@@ -25,37 +25,6 @@ const ATTRIBUTELIST: Array<any> = [
     { require: '', name: 'customRegExp', type: 'regExp', description: `ใช้กำหนด Regular Expression สำหรับตรวจสอบข้อมูลที่ระบุใน textbox
     type: text, password`},
 ];
-const SYSTEMJSLINE: Array<any> = [
-    `map: {`,
-    ` 'numeral': 'npm:numeral/numeral.js',`,
-    ` 'go-textbox': 'gos:textbox/{version}',`,
-    ` 'go-label': 'gos:label/{version}',`,
-    ` 'go-service': 'gos:service/{version}',`,
-    ` 'go-directive': 'gos:directive/{version}',`,
-    `},`,
-    ``,
-    `packages: {`,
-    ` 'go-textbox': {`,
-    `    main: './textbox.js',`,
-    `    defaultExtension: 'js'`,
-    `  },`,   
-    ` 'go-label': {`,
-    `    main: './label.js',`,
-    `    defaultExtension: 'js'`,
-    `  },`,   
-    `}`,   
-    ` 'go-directive': {`,
-    `    main: './index.js',`,
-    `    defaultExtension: 'js'`,
-    `  },`,   
-    `}`,   
-    ` 'go-service': {`,
-    `    main: './index.js',`,
-    `    defaultExtension: 'js'`,
-    `  },`,   
-    `}`,   
-    
-];
 
 const TYPELIST: Array<any> = [
     { type: 'text', description: `สามารถระบุตัวอักษร และอักขระพิเศษต่างๆ ไม่มีการ validate เบื้องต้น`},
@@ -66,19 +35,8 @@ const TYPELIST: Array<any> = [
     { type: 'hidden', description: `ใช้ระบุข้อมูลตัวอักษร และอักขระพิเศษต่างๆ ไม่แสดงค่าใดๆบนหน้าจอ ไม่มีการ validate เบื้องต้น`},
 ];
 
-const APPMODULELINE: Array<any> = [
-    `import { textboxComponent } from 'go-textbox';`,
-    `import { LabelComponent } from 'go-label';`,
-    `import { CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective } from 'go-directive';`,
-    ``,
-    `@NgModule({`,
-    `   declarations: [`,
-    `   ..........`,
-    `   textboxComponent,`,
-    `   LabelComponent,`,
-    `   CustomDisabledDirective, CustomReadonlyDirective, CustomMaxlengthDirective,`,
-    `   ..........`,
-    `],`,
+const _releaseUpdate: Array<any> = [
+  { head: `Label`, data: `ลบ label ออกจาก textbox เพื่อความยืดหยุ่นในการใช้งาน` },
 ];
 
 @Component({
@@ -89,19 +47,18 @@ export class TextboxDocument implements OnInit {
 
   private componentTag: string = '<go-textbox>';
   private componentDescription: string = `Text box ใช้ในการรับค่าและแสดงผลข้อมูลตามประเภทต่างๆ`;
-  private version: string = '1.0';
-  private releaseDate: string = '10/02/2017';
+  private version: string = '2.0';
+  private releaseDate: string = '3/05/2017';
   private prefixSyntax: string = `<go-textbox `;
   private attrSyntax: string = `goId="textbox _id" goName="textbox _name" type="type_name" [ defaultValue="text" or [(defaultValue)]="default_value_parameter" ]
                                             [format="format_pattern"] [disable="true"] [readonly="true"] [maxlength="number"] [placeholder="text"] [colorTheme="text"] [warningText="text"]`;
   private suffixSyntax: string = `></go-textbox>`;
   private attributeList = ATTRIBUTELIST;
-  private systemjsLine = SYSTEMJSLINE;
-  private appModuleLine = APPMODULELINE;
   private typeList = TYPELIST;
   private typeDescription = 'รายละเอียดของ text box ใน type ต่างๆดังต่อไปนี้';
   private numeralJSVersion = '2.0.4';
   private regExp = /^[a-zA-Z0-9]{8}$/g;
+  private releaseUpdate = _releaseUpdate;
 
   paramText = '{{userName}}';
   myInteger = 1111;
