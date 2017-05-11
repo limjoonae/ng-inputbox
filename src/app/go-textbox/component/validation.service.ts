@@ -10,12 +10,12 @@ export class ValidationService {
     return (value == '' || pattern.test(value))? true : false;
   }
 
-  validateInteger(value: string): boolean {
+  validateNumber(value: string): boolean {
     let pattern = /^-?([0-9]\d*)$/;
     return (value == '' || pattern.test(value))? true : false;
   }
 
-  validateNumber(value: string): boolean {
+  validateCurrency(value: string): boolean {
     let pattern = /^-?(([0-9]\d*)(\.[0-9]\d*){0,1})$/;
     return (value == '' || pattern.test(value))? true : false;
   }

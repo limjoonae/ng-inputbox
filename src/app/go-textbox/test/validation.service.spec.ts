@@ -47,51 +47,51 @@ describe('Service: ValidationService => validateEmail', () => {
 
 });
 
-describe('Service: ValidationService => validateInteger', () => {
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        providers: [ValidationService]
-      });
-    });
-    it(`should define function 'validateInteger'`, inject([ValidationService], (service: ValidationService) => {
-      expect(service.validateInteger).toBeDefined();
-    }));
-
-    it(`should return true if input contain 0-9`, inject([ValidationService], (service: ValidationService) => {
-      expect(service.validateInteger('123456789000')).toBe(true);
-    }));
-
-    it(`should return false if input is '12cd345' (contain another character)`, inject([ValidationService], (service: ValidationService) => {
-      expect(service.validateInteger('12cd345')).toBe(false);
-    }));
-
-});
-
 describe('Service: ValidationService => validateNumber', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         providers: [ValidationService]
       });
     });
-
     it(`should define function 'validateNumber'`, inject([ValidationService], (service: ValidationService) => {
       expect(service.validateNumber).toBeDefined();
     }));
 
+    it(`should return true if input contain 0-9`, inject([ValidationService], (service: ValidationService) => {
+      expect(service.validateNumber('123456789000')).toBe(true);
+    }));
+
+    it(`should return false if input is '12cd345' (contain another character)`, inject([ValidationService], (service: ValidationService) => {
+      expect(service.validateNumber('12cd345')).toBe(false);
+    }));
+
+});
+
+describe('Service: ValidationService => validateCurrency', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [ValidationService]
+      });
+    });
+
+    it(`should define function 'validateCurrency'`, inject([ValidationService], (service: ValidationService) => {
+      expect(service.validateCurrency).toBeDefined();
+    }));
+
     it(`should return true if input is '12000.0058'`, inject([ValidationService], (service: ValidationService) => {
-      expect(service.validateNumber('12000.0058')).toBe(true);
+      expect(service.validateCurrency('12000.0058')).toBe(true);
     }));
 
     it(`should return true if input is '000.0058'`, inject([ValidationService], (service: ValidationService) => {
-      expect(service.validateNumber('000.0058')).toBe(true);
+      expect(service.validateCurrency('000.0058')).toBe(true);
     }));
 
     it(`should return true if input is '000.0000'`, inject([ValidationService], (service: ValidationService) => {
-      expect(service.validateNumber('000.0000')).toBe(true);
+      expect(service.validateCurrency('000.0000')).toBe(true);
     }));
 
     it(`should return false if input is '00hello000'`, inject([ValidationService], (service: ValidationService) => {
-      expect(service.validateNumber('00hello000')).toBe(false);
+      expect(service.validateCurrency('00hello000')).toBe(false);
     }));
 
 });

@@ -6,7 +6,7 @@ export class TransformService {
 
   constructor() { }
 
-  toNumberFormat(value: string, customFormat?: string): string {
+  toCurrencyFormat(value: string, customFormat?: string): string {
     let defaultFormat = '0,0.00';
     if(value != '')
       if(customFormat == null || customFormat == ''){
@@ -17,7 +17,7 @@ export class TransformService {
     return '';
   }
 
-  toIntegerFormat(value: string): string {
+  toNumberFormat(value: string): string {
     if(value != '')
       return numeral(value).format('0');
     return '';
