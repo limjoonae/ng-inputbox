@@ -1,30 +1,8 @@
 <span *ngIf="type != 'hidden'" class="{{hasClass}}">
-	<!--<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'text'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="text" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
-		[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
-
-	<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'password'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="password" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
-		[value]="defaultValue" [customMaxlength]="maxlength" (keyup)="customValidate(input.value)">
-
-	<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'integer'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [placeholder]="placeholder" [customDisabled]="disable"
-		[customReadonly]="readonly" type="number" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateInteger(input.value)">
-
-	<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'number'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly"
-		type="currency" [value]="defaultValue" (focus)="clearFormat(input.value)" (blur)="defaultValue = numberWithFormat" (keyup)="validateNumber(input.value)">-->
-
-	<!--<input [tooltip]="warningMsgReturn" #pop="bs-tooltip" placement="top" *ngIf="type == 'email'" #input class="form-control {{colorClass}} {{hasFormControlClass}}" type="email" [placeholder]="placeholder" [customDisabled]="disable"
-		[customReadonly]="readonly" [value]="defaultValue" [customMaxlength]="maxlength" (keyup)="validateEmail(input.value)" (blur)="checkRequire(input.value)" (focus)="setNormalBorder(input.value)">-->
-	<!--<input *ngIf="type == 'currency'" #input type="currency" class="form-control {{colorClass}} {{hasFormControlClass}}" 
-		[attr.id]="goId" [attr.required]="required" [value]="inputFieldValue"
-		[placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly" [customMaxlength]="maxlength"
-		(blur)="onInputBlur($event)" (input)="onInput($event)" (focus)="onInputFocus(input, $event)"
-		[tooltip]="warningMsgReturn" #pop="bs-tooltip" [placement]="tooltipPos" 
-		>-->
-	
 	<input #input [type]="type" class="form-control {{colorClass}} {{hasFormControlClass}}" 
 		[attr.id]="goId" [attr.required]="required" [value]="inputFieldValue"
 		[placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly" [customMaxlength]="maxlength"
 		(blur)="onInputBlur($event)" (input)="onInput($event)" (focus)="onInputFocus(input, $event)"
-		[tooltip]="warningMsgReturn" #pop="bs-tooltip" [placement]="warningPos" 
-		>
+		[tooltip]="warningMsgReturn" #pop="bs-tooltip" [placement]="warningPos">
 </span>
 <input *ngIf="type == 'hidden'" type="hidden" [value]="inputFieldValue">
