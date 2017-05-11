@@ -7,7 +7,6 @@
 		data-toggle="tab">Example</a></li>
 </ul>
 
-<!-- Tab panes -->
 <div class="tab-content">
 	<div role="tabpanel" class="tab-pane fade in active" id="Overview">
 		<div class="jumbotron">
@@ -16,6 +15,18 @@
 				<div class="col-md-6">
 					<strong>Description</strong>
 					<p>{{componentDescription}}</p>
+					<strong>Feature</strong>
+					<ul>
+						<li>validate ข้อมูลใน textbox ได้ตาม textbox type</li>
+						<li>ส่งค่าข้อมูล และ ผลการ validate เพื่อนำไปให้ต่อได้</li>
+						<li>ใช้งานร่วมกับ form validation ได้</li>
+						<li>ระบุรูปแบบข้อมูลของ textbox type currency ได้</li>
+						<li>ระบุ regular expression ที่ต้องการใช้ validate ข้อมูลได้</li>
+						<li>กำหนดให้เป็น textbox ที่ถูกปิด(disable) หรืออ่านได้อย่างเดียว(readoonly) ได้</li>
+						<li>กำหนดความยาวสูงสุดในการรับข้อมูลได้</li>
+						<li>ใส่สีให้กับ textbox ได้</li>
+						<li>กำหนดข้อความเตือน และตำแหน่งของข้อความได้</li>
+					</ul>
 				</div>
 				<div class="col-md-6">
 					<p><strong>Version: {{version}}</strong>
@@ -32,14 +43,13 @@
 				<h3>Release Update</h3>
 			</div>
 			<div class="card-block">
-				<li *ngFor="let line of releaseUpdate">{{line.data}} </li>	
+				<h5><strong>Version </strong>2.0 ({{releaseDate}})</h5>
+				<li *ngFor="let line of releaseUpdate_v_2">{{line.data}} </li>	
 			</div>
 		</div>
 	</div>
   	<div role="tabpanel" class="tab-pane fade" id="Document">
 		<div class="jumbotron">
-			<h2>Syntax</h2>
-			<!--<small>[  ] = optional attribute</small>-->
 			<code>{{prefixSyntax}}<em>{{attrSyntax}}</em>{{suffixSyntax}}</code>
 		</div>
 		<div class="jumbotron">
@@ -88,49 +98,55 @@
 		</div>
 	</div>
 	<div role="tabpanel" class="tab-pane fade" id="Example">
-		<!--<div class="container-fluid">-->
 		<div class="jumbotron">
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<go-textbox hiddenLabel="true" defaultValue="John" type="text" goId="textbox_1" colorTheme="success"></go-textbox>
+					<label><strong>Basic Textbox</strong></label>
+					<go-textbox type="text" [(ngModel)]="basic_textbox" goId="text_box"></go-textbox>
 				</div>
 				<div class="col-md-9">
-					<div role="tab" id="ex_1">
+					<div role="tab" id="ex_basic_textbox">
 						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_1" aria-expanded="false" aria-controls="collapse_ex_1">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_basic_textbox" aria-expanded="false" aria-controls="collapse_ex_basic_textbox">
 							Code Example#1
 							</a>
 						</h5>
 					</div>
-					<div id="collapse_ex_1" class="collapse" role="tabpanel" aria-labelledby="ex_1">
+					<div id="collapse_ex_basic_textbox" class="collapse" role="tabpanel" aria-labelledby="ex_basic_textbox">
 						<div class="jumbotron">
-							<code>&lt;go-textbox defaultValue="John" type="text" goId="textbox_1" colorTheme="success"&gt;&lt;/go-textbox&gt;</code>
+							<code>&lt;go-textbox type="text" [(ngModel)]="basic_textbox" goId="text_box"&gt;&lt;/go-textbox&gt;</code>
+							<p></p>
+							<p></p>
+							<p>component.ts</p>
+							<pre><code>basic_textbox = 'John';</code></pre>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<go-textbox maxlength="6" type="password" goId="password_box" colorTheme="info" name="password_box"></go-textbox>
+					<label><strong>Password box</strong></label>
+					<go-textbox type="password" [(ngModel)]="password_box" maxlength="6" goId="password_box"></go-textbox>
 				</div>
 				<div class="col-md-9">
-					<div role="tab" id="ex_2">
+					<div role="tab" id="ex_password_box">
 						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_2" aria-expanded="false" aria-controls="collapse_ex_2">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_password_box" aria-expanded="false" aria-controls="collapse_ex_password_box">
 							Code Example#2
 							</a>
 						</h5>
 					</div>
-					<div id="collapse_ex_2" class="collapse" role="tabpanel" aria-labelledby="ex_2">
+					<div id="collapse_ex_password_box" class="collapse" role="tabpanel" aria-labelledby="ex_password_box">
 						<div class="jumbotron">
-							<code>&lt;go-textbox maxlength="6" type="password" goId="password_box" colorTheme="info"&gt;&lt;/go-textbox&gt;</code>
+							<code>&lt;go-textbox type="password" [(ngModel)]="password_box" maxlength="6" goId="password_box"&gt;&lt;/go-textbox&gt;</code>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<go-textbox maxlength="6" defaultValue="1111" type="integer" goId="integer_box" colorTheme="warning" placeholder="0-9"></go-textbox>
+					<label><strong>Number box</strong></label>
+					<go-textbox type="number" [(ngModel)]="number_box" goId="number_box" maxlength="6" placeholder="0-9"></go-textbox>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_3">
@@ -142,15 +158,20 @@
 					</div>
 					<div id="collapse_ex_3" class="collapse" role="tabpanel" aria-labelledby="ex_3">
 						<div class="jumbotron">
-							<code>&lt;go-textbox maxlength="6" defaultValue="1111" type="number" goId="integer_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/go-textbox&gt;</code>
+							<code>&lt;go-textbox type="number" [(ngModel)]="number_box" goId="number_box" maxlength="6" placeholder="0-9"&gt;&lt;/go-textbox&gt;</code>
+							<p></p>
+							<p></p>
+							<p>component.ts</p>
+							<pre><code>number_box = 1111;</code></pre>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<go-textbox [(isValid)]="isValidFlag" [(defaultValue)]="myNumber" type="number" goId="number_box" colorTheme="warning" placeholder="0-9"></go-textbox>
-					<p>is valid number: {{isValidFlag}}</p>
+					<label><strong>Currency box with tooptip positioning</strong></label>
+					<go-textbox type="currency" [(ngModel)]="currency_box" goId="currency_box" warningPos="bottom" warningText="กรุณาระบุรูปแบบตัวเลขให้ถูกต้อง"></go-textbox>
+					<small>*ทดสอบโดยการระบุตัวอักษรลงไปและเอาเม้าส์ชี้*</small>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_4">
@@ -162,19 +183,20 @@
 					</div>
 					<div id="collapse_ex_4" class="collapse" role="tabpanel" aria-labelledby="ex_4">
 						<div class="jumbotron">
-							<code>&lt;go-textbox defaultValue="1111.22" type="number" goId="number_box" colorTheme="warning" placeholder="0-9"&gt;&lt;/go-textbox&gt;</code><br>
-							<code>is valid number: {{isValidFlagText}}</code>
+							<code>&lt;go-textbox type="currency" [(ngModel)]="currency_box" goId="currency_box" warningPos="bottom" warningText="กรุณาระบุรูปแบบตัวเลขให้ถูกต้อง"&gt;&lt;/go-textbox&gt;</code><br>
 							<p></p>
 							<p></p>
 							<p>component.ts</p>
-							<pre><code>isValidFlag: boolean;</code></pre>
+							<pre><code>currency_box = 1111.22;</code></pre>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<go-textbox type="email" goId="email_1" placeholder="example@host.com" warningText=""></go-textbox>
+					<label><strong>Currency box return validation result</strong></label>
+					<go-textbox type="currency" [(ngModel)]="currency_validate" [(isValid)]="isValidFlag" goId="currency_validate"></go-textbox>
+					<p>is valid number: {{isValidFlag}}</p>
 				</div>
 				<div class="col-md-9">
 					<div role="tab" id="ex_5">
@@ -186,27 +208,61 @@
 					</div>
 					<div id="collapse_ex_5" class="collapse" role="tabpanel" aria-labelledby="ex_5">
 						<div class="jumbotron">
-							<code>&lt;go-textbox type="email" goId="email_1" placeholder="example@host.com" warningText=""&gt;&lt;/go-textbox&gt;</code>
+							<code>&lt;go-textbox type="currency" [(ngModel)]="currency_validate" [(isValid)]="isValidFlag" goId="currency_validate"&gt;&lt;/go-textbox&gt;</code><br>
+							<code>is valid number: {{isValidFlagText}}</code>
+							<p></p>
+							<p></p>
+							<p>component.ts</p>
+							<pre><code>currency_validate = 1111.22;</code></pre>
+							<pre><code>isValidFlag: boolean;</code></pre>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<go-textbox [(isValid)]="isValidCustomFlag" type="password" lgoId="custom_validate" [customRegExp]="regExp"></go-textbox>
-					<p>is valid password: {{isValidCustomFlag}}</p>
+					<label><strong>Email box with form validation</strong></label>
+					<form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm.value)">
+						<go-textbox type="email" [(ngModel)]="form_validate" name="email_1" required #name="ngModel" goId="email_1" placeholder="example@host.com"></go-textbox>
+						<button type="submit" class="btn btn-default" [disabled]="!emailForm.form.valid">Submit</button>
+					</form>
 				</div>
 				<div class="col-md-9">
-					<div role="tab" id="ex_6">
+					<div role="tab" id="ex_email_validate">
 						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_6" aria-expanded="false" aria-controls="collapse_ex_6">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_email_validate" aria-expanded="false" aria-controls="collapse_ex_email_validate">
 							Code Example#6
 							</a>
 						</h5>
 					</div>
-					<div id="collapse_ex_6" class="collapse" role="tabpanel" aria-labelledby="ex_6">
+					<div id="collapse_ex_email_validate" class="collapse" role="tabpanel" aria-labelledby="ex_email_validate">
 						<div class="jumbotron">
-							<code>&lt;go-textbox [(isValid)]="isValidCustomFlag" type="password" goId="custom_validate" [customRegExp]="regExp"&gt;&lt;/go-textbox&gt;</code>
+							<pre><code>&lt;form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm.value)"&gt;
+	&lt;go-textbox type="email" [(ngModel)]="form_validate" name="email_1" required #name="ngModel" 
+		goId="email_1" placeholder="example@host.com"&gt;&lt;/go-textbox&gt;
+	&lt;button type="submit" class="btn btn-default" [disabled]="!emailForm.form.valid"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<label><strong>Password with customRegExp</strong></label>
+					<go-textbox [(ngModel)]="custom_validate" [(isValid)]="isValidCustomFlag" type="password" goId="custom_validate" [customRegExp]="regExp"></go-textbox>
+					<p>is valid password: {{isValidCustomFlag}}</p>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_password_validation">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_password_validation" aria-expanded="false" aria-controls="collapse_ex_password_validation">
+							Code Example#7
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_password_validation" class="collapse" role="tabpanel" aria-labelledby="ex_password_validation">
+						<div class="jumbotron">
+							<code>&lt;go-textbox [(ngModel)]="custom_validate" [(isValid)]="isValidCustomFlag" type="password" goId="custom_validate" [customRegExp]="regExp"&gt;&lt;/go-textbox&gt;</code>
 							<code>is valid password: {{isValidCustomFlagText}}</code>
 							<p></p>
 							<p></p>
@@ -219,63 +275,87 @@
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<go-textbox [(defaultValue)]="userName" type="text" require="true" goId="textbox_3" colorTheme="danger"></go-textbox>
-					value return: {{userName}}
+					<label><strong>Disable textbox</strong></label>
+					<go-textbox type="text" [(ngModel)]="disable_textbox" goId="disable_textbox" disable="true"></go-textbox>
 				</div>
 				<div class="col-md-9">
-					<div role="tab" id="ex_7">
+					<div role="tab" id="ex_disable_textbox">
 						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_7" aria-expanded="false" aria-controls="collapse_ex_7">
-							Code Example#7
-							</a>
-						</h5>
-					</div>
-					<div id="collapse_ex_7" class="collapse" role="tabpanel" aria-labelledby="ex_7">
-						<div class="jumbotron">
-							<code>&lt;go-textbox [(defaultValue)]="userName" type="text" require="true" goId="textbox_3" colorTheme="danger"&gt;&lt;/go-textbox&gt;</code><br>
-							<code>value return: {{paramText}}</code>
-							<p></p>
-							<p></p>
-							<p>component.ts</p>
-							<pre><code>userName: string = "John";</code></pre>
-						</div>
-					</div>
-				</div>
-			</div><br>
-			<div class="row row-in-tab">
-				<div class="col-md-3">
-					<go-textbox disable="true" [(defaultValue)]="userName" type="text" goId="textbox_4" colorTheme="danger"></go-textbox>
-				</div>
-				<div class="col-md-9">
-					<div role="tab" id="ex_8">
-						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_8" aria-expanded="false" aria-controls="collapse_ex_8">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_disable_textbox" aria-expanded="false" aria-controls="collapse_ex_disable_textbox">
 							Code Example#8
 							</a>
 						</h5>
 					</div>
-					<div id="collapse_ex_8" class="collapse" role="tabpanel" aria-labelledby="ex_8">
+					<div id="collapse_ex_disable_textbox" class="collapse" role="tabpanel" aria-labelledby="ex_disable_textbox">
 						<div class="jumbotron">
-							<code>&lt;go-textbox disable="true" [(defaultValue)]="userName" type="text" goId="textbox_4" colorTheme="danger"&gt;&lt;/go-textbox&gt;</code><br>
+							<code>&lt;go-textbox type="text" [(ngModel)]="disable_textbox" goId="disable_textbox" disable="true"&gt;&lt;/go-textbox&gt;</code><br>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-in-tab">
 				<div class="col-md-3">
-					<go-textbox readonly="true" [(defaultValue)]="userName" type="text" goId="textbox_2" colorTheme="success"></go-textbox>
+					<label><strong>Readonly textbox</strong></label>
+					<go-textbox type="text" [(ngModel)]="readonly_textbox" goId="textbox_2" readonly="true"></go-textbox>
 				</div>
 				<div class="col-md-9">
-					<div role="tab" id="ex_9">
+					<div role="tab" id="ex_readonly_textbox">
 						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_9" aria-expanded="false" aria-controls="collapse_ex_9">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_readonly_textbox" aria-expanded="false" aria-controls="collapse_ex_readonly_textbox">
 							Code Example#9
 							</a>
 						</h5>
 					</div>
-					<div id="collapse_ex_9" class="collapse" role="tabpanel" aria-labelledby="ex_9">
+					<div id="collapse_ex_readonly_textbox" class="collapse" role="tabpanel" aria-labelledby="ex_readonly_textbox">
 						<div class="jumbotron">
-							<code>&lt;go-textbox readonly="true" [(defaultValue)]="userName" type="text" goId="textbox_2" colorTheme="success"&gt;&lt;/go-textbox&gt;</code><br>
+							<code>&lt;go-textbox type="text" [(ngModel)]="readonly_textbox" goId="textbox_2" readonly="true"&gt;&lt;/go-textbox&gt;</code><br>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<label><strong>Required textbox</strong></label>
+					<go-textbox [(ngModel)]="required_textbox" type="text" required goId="required_textbox"></go-textbox>
+					<small>*ทดสอบโดยคลิกในช่องว่าง แล้วไปคลิกที่อื่นๆ*</small>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_required_textbox">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_required_textbox" aria-expanded="false" aria-controls="collapse_ex_required_textbox">
+							Code Example#10
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_required_textbox" class="collapse" role="tabpanel" aria-labelledby="ex_required_textbox">
+						<div class="jumbotron">
+							<code>&lt;go-textbox [(ngModel)]="required_textbox" type="text" required goId="required_textbox"&gt;&lt;/go-textbox&gt;</code><br>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-in-tab">
+				<div class="col-md-3">
+					<label><strong>Textbox with color</strong></label>
+					<go-textbox type="text" [(ngModel)]="color_textbox_1" goId="color_textbox_1" colorTheme="success"></go-textbox>
+					<go-textbox type="text" [(ngModel)]="color_textbox_2" goId="color_textbox_2" colorTheme="info"></go-textbox>
+					<go-textbox type="text" [(ngModel)]="color_textbox_3" goId="color_textbox_3" colorTheme="warning"></go-textbox>
+					<go-textbox type="text" [(ngModel)]="color_textbox_4" goId="color_textbox_4" colorTheme="danger"></go-textbox>
+				</div>
+				<div class="col-md-9">
+					<div role="tab" id="ex_color_textbox">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" href="#collapse_ex_color_textbox" aria-expanded="false" aria-controls="collapse_ex_color_textbox">
+							Code Example#11
+							</a>
+						</h5>
+					</div>
+					<div id="collapse_ex_color_textbox" class="collapse" role="tabpanel" aria-labelledby="ex_color_textbox">
+						<div class="jumbotron">
+							<code>&lt;go-textbox type="text" [(ngModel)]="color_textbox_1" goId="color_textbox_1" colorTheme="success"&gt;&lt;/go-textbox&gt;</code><br>
+							<code>&lt;go-textbox type="text" [(ngModel)]="color_textbox_2" goId="color_textbox_2" colorTheme="info"&gt;&lt;/go-textbox&gt;</code><br>
+							<code>&lt;go-textbox type="text" [(ngModel)]="color_textbox_3" goId="color_textbox_3" colorTheme="warning"&gt;&lt;/go-textbox&gt;</code><br>
+							<code>&lt;go-textbox type="text" [(ngModel)]="color_textbox_4" goId="color_textbox_4" colorTheme="danger"&gt;&lt;/go-textbox&gt;</code><br>
 						</div>
 					</div>
 				</div>
