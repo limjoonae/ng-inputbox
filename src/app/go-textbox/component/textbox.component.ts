@@ -1,42 +1,53 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
 import { BootstrapClassService, CommonService } from '../../go-service/component/index';
 import { ValidationService } from './validation.service';
 import { TransformService } from './transform.service';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
+export const TEXTBOX_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => TextboxComponent),
+  multi: true
+};
 
 @Component({
   selector: 'go-textbox',
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.css'],
-  providers: [BootstrapClassService, CommonService, ValidationService, TransformService]
+  providers: [TEXTBOX_VALUE_ACCESSOR, BootstrapClassService, CommonService, ValidationService, TransformService]
 })
-export class TextboxComponent implements OnInit {
+export class TextboxComponent implements OnInit, ControlValueAccessor {
+
+  value: string;
+  inputFieldValue: string;
+  onModelChange: Function = () => {};
+  onModelTouched: Function = () => {};
+  focus: boolean;
+  classPrefix = 'alert';
+  colorClass: string;
+  warningMsgReturn: string;
+  warningMsg: string;
+  space = ' ';
+  hasClass = '';
+  hasFormControlClass = '';
 
   @Input() goId: string;
-  @Input() goName: string;
-  @Input() hiddenLabel: string;
   @Input() type: string;
-  // @Input() label: string;
-  // @Input() require: string;
-  @Input() disable: string;
+  @Input() disable: any;
   @Input() readonly: string;
   @Input() maxlength: string;
-  @Input() defaultValue: any;
-  @Output() defaultValueChange = new EventEmitter<string>();
-  @Input() isValid: boolean;
-  @Output() isValidChange = new EventEmitter<boolean>();
   @Input() placeholder: string;
   @Input() colorTheme: string;
   @Input() warningText: string;
   @Input() numberFormat: string;
   @Input() customRegExp: RegExp;
-  public numberWithFormat: any;
-  public classPrefix = 'alert';
-  public colorClass: string;
-  public warningMsgReturn: string;
-  public warningMsg: string;
-  public space = ' ';
-  public hasClass = '';
-  public hasFormControlClass = '';
+  @Input() isValid: boolean = true;
+  @Input() required: boolean;
+  @Input() warningPos = 'top';
+
+  @Output() isValidChange = new EventEmitter<boolean>();
+  @Output() onFocus: EventEmitter<any> = new EventEmitter();
+  @Output() onBlur: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private _bootstrapClassService: BootstrapClassService,
@@ -47,38 +58,127 @@ export class TextboxComponent implements OnInit {
   ngOnInit() {
     this.colorClass = this.setStyleClass(this.colorTheme, this.classPrefix);
     this.placeholder = this._commonService.isNull(this.placeholder) ? '' : this.placeholder;
-    this.defaultValueChange.emit(this.defaultValue);
     this.isValidChange.emit(this.isValid);
-    this.defaultValue = this.returnDefaultValueOnInit(this.defaultValue);
-    this.numberWithFormat = this.defaultValue;
     this.warningMsg = this._commonService.isNull(this.warningText) ? 'please input valid '.concat(this.type) : this.warningText;
   }
 
-  returnDefaultValueOnInit(value: any): any {
-    if (this._commonService.isNull(this.defaultValue)) {
-      value = '';
-    } else if (this.type == 'integer') {
-      value = this.getIntegerFormat(this.defaultValue);
-    } else if (this.type == 'number') {
-      value = this.getNumberFormat(this.defaultValue);
+//// ControlValueAccessor implementation
+  writeValue(value) : void {
+    if(this.type == 'currency') {
+      this.value = this.getCurrencyFormat(value);
     } else {
-      value = this.defaultValue;
+      this.value = value;
     }
-    return value;
+      this.updateInputfield();
+  }
+  
+  registerOnChange(fn: Function): void {
+      this.onModelChange = fn;
   }
 
-  clearFormat(value: string): void {
+  registerOnTouched(fn: Function): void {
+      this.onModelTouched = fn;
+  }
+  
+  setDisabledState(val: boolean): void {
+      this.disable = val;
+  }
+//// End ControlValueAccessor implementation
+
+  updateInputfield() {
+      if(this.value) {
+          this.inputFieldValue = this.value;
+      }
+      else {
+          this.inputFieldValue = '';
+      }
+  }
+
+  updateModel() {
+      this.onModelChange(this.value);
+  }
+
+  onInputFocus(input, event) {
+      let val = event.target.value;
+      let type = input.type;
+      this.focus = true;
+      this.onFocus.emit(event);
+      if(val == ''){
+        this.setNormalBorder();
+      }
+      if(this.type == 'currency') {
+        this.inputFieldValue = this.clearFormat(val);
+      }
+  }
+
+  onInputBlur(event) {
+    let val = event.target.value;
+    let required = event.target.required;
+    if(val == '' && required) {
+      this.setRequireBorder();
+    } else {
+      this.validateInput(val);
+    }
+
+    this.focus = false;
+    this.onBlur.emit(event);
+    this.updateInputfield();
+    this.onModelTouched();
+  }
+
+  onInput(event) {  
+      let val = event.target.value;  
+      try {
+          this.validateInput(val);
+          this.value = val;
+      } 
+      catch(err) {
+          this.value = null;
+      }
+      this.updateModel();
+  }
+
+  validateInput(val) {
+    switch (this.type) {
+        case "email":
+          this.validateEmail(val);
+          break;
+        case "number":
+          this.validateNumber(val);
+          break;
+        case "currency":
+          this.validateCurrency(val);
+          break;
+        default:
+          this.customValidate(val);
+      }
+  }
+
+  setValidationStyle(validationResult: boolean): void {
+    !validationResult ? (this.hasClass = 'has-warning') &&  (this.hasFormControlClass = 'form-control-warning') : (this.hasClass = '') &&  (this.hasFormControlClass = '');
+  }
+
+  setRequireBorder(): void {
+      this.hasClass = 'has-danger';
+      this.hasFormControlClass = 'form-control-danger';
+  }
+
+  setNormalBorder(): void{
+      this.hasClass = '';
+      this.hasFormControlClass = '';
+  }
+
+  clearFormat(value: string): any {
     let stringToClear = /,/g;
-    this.defaultValue = this._transformStringNumber.toClearFormat(value, stringToClear);
-    this.defaultValueChange.emit(this.defaultValue);
+    return this._transformStringNumber.toClearFormat(value, stringToClear);
   }
 
-  getIntegerFormat(value: string): string {
-    return this._transformStringNumber.toIntegerFormat(value);
+  getNumberFormat(value: string): string {
+    return this._transformStringNumber.toNumberFormat(value);
   }
 
-  getNumberFormat(value: any): any {
-    return this._transformStringNumber.toNumberFormat(value, this.numberFormat);
+  getCurrencyFormat(value: any): any {
+    return this._transformStringNumber.toCurrencyFormat(value, this.numberFormat);
   }
 
   setStyleClass(styleClass: string, prefix: string): string {
@@ -89,15 +189,10 @@ export class TextboxComponent implements OnInit {
     return validationResult ? '' : this.warningMsg;
   }
 
-  setValidationStyle(validationResult: boolean): void {
-    !validationResult ? (this.hasClass = 'has-warning') &&  (this.hasFormControlClass = 'form-control-warning') : (this.hasClass = '') &&  (this.hasFormControlClass = '');
-  }
-
   customValidate(value: string): void {
     let isValid = this._commonService.isNull(this.customRegExp) ? true : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
     this.warningMsgReturn = this.returnWarningMessage(isValid);
     this.setValidationStyle(isValid);
-    this.defaultValueChange.emit(value);
     this.isValidChange.emit(isValid);
   }
 
@@ -105,15 +200,6 @@ export class TextboxComponent implements OnInit {
     let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateEmail(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
     this.warningMsgReturn = this.returnWarningMessage(isValid);
     this.setValidationStyle(isValid);
-    this.defaultValueChange.emit(value);
-    this.isValidChange.emit(isValid);
-  }
-
-  validateInteger(value: any): void {
-    let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateInteger(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
-    this.warningMsgReturn = this.returnWarningMessage(isValid);
-    this.setValidationStyle(isValid);
-    this.defaultValueChange.emit(value);
     this.isValidChange.emit(isValid);
   }
 
@@ -121,8 +207,14 @@ export class TextboxComponent implements OnInit {
     let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateNumber(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
     this.warningMsgReturn = this.returnWarningMessage(isValid);
     this.setValidationStyle(isValid);
-    isValid ? this.numberWithFormat = this.getNumberFormat(value) : this.numberWithFormat = value; 
-    this.defaultValueChange.emit(value);
+    this.isValidChange.emit(isValid);
+  }
+
+  validateCurrency(value: any): void {
+    let isValid = this._commonService.isNull(this.customRegExp) ? this._validationService.validateCurrency(value) : this._validationService.validateWithCustomRegExp(this.customRegExp, value);
+    this.warningMsgReturn = this.returnWarningMessage(isValid);
+    this.setValidationStyle(isValid);
+    isValid ? this.value = this.getCurrencyFormat(value) : this.value = value; 
     this.isValidChange.emit(isValid);
   }
 
