@@ -223,7 +223,7 @@
 				<div class="col-md-3">
 					<label><strong>Email box with form validation</strong></label>
 					<form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm.value)">
-						<go-textbox type="email" [(ngModel)]="form_validate" name="email_1" required #name="ngModel" goId="email_1" placeholder="example@host.com"></go-textbox>
+						<go-textbox type="email" [(ngModel)]="form_validate" name="email_1" required #email_1="ngModel" goId="email_1" placeholder="example@host.com"></go-textbox>
 						<button type="submit" class="btn btn-default" [disabled]="!emailForm.form.valid">Submit</button>
 					</form>
 				</div>
@@ -238,7 +238,7 @@
 					<div id="collapse_ex_email_validate" class="collapse" role="tabpanel" aria-labelledby="ex_email_validate">
 						<div class="jumbotron">
 							<pre><code>&lt;form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm.value)"&gt;
-	&lt;go-textbox type="email" [(ngModel)]="form_validate" name="email_1" required #name="ngModel" 
+	&lt;go-textbox type="email" [(ngModel)]="form_validate" name="email_1" required #email_1="ngModel" 
 		goId="email_1" placeholder="example@host.com"&gt;&lt;/go-textbox&gt;
 	&lt;button type="submit" class="btn btn-default" [disabled]="!emailForm.form.valid"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;</code></pre>
