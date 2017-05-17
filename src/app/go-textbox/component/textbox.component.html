@@ -1,8 +1,0 @@
-<span *ngIf="type != 'hidden'" class="{{hasClass}}">
-	<input #input [type]="type" class="form-control {{colorClass}} {{hasFormControlClass}}" 
-		[attr.id]="goId" [attr.required]="required" [value]="inputFieldValue"
-		[placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly" [customMaxlength]="maxlength"
-		(blur)="onInputBlur($event)" (input)="onInput($event)" (focus)="onInputFocus(input, $event)"
-		[tooltip]="warningMsgReturn" #pop="bs-tooltip" [placement]="warningPos">
-</span>
-<input *ngIf="type == 'hidden'" type="hidden" [value]="inputFieldValue">

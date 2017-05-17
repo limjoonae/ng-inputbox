@@ -12,8 +12,32 @@ export const TEXTBOX_VALUE_ACCESSOR: any = {
 
 @Component({
   selector: 'go-textbox',
-  templateUrl: './textbox.component.html',
-  styleUrls: ['./textbox.component.css'],
+  template: `
+            <span *ngIf="type != 'hidden'" class="{{hasClass}}">
+              <input #input [type]="type" class="form-control {{colorClass}} {{hasFormControlClass}}" 
+                [attr.id]="goId" [attr.required]="required" [value]="inputFieldValue"
+                [placeholder]="placeholder" [customDisabled]="disable" [customReadonly]="readonly" [customMaxlength]="maxlength"
+                (blur)="onInputBlur($event)" (input)="onInput($event)" (focus)="onInputFocus(input, $event)"
+                [tooltip]="warningMsgReturn" #pop="bs-tooltip" [placement]="warningPos">
+            </span>
+            <input *ngIf="type == 'hidden'" type="hidden" [value]="inputFieldValue">
+  `,
+  styles: [`
+          .has-warning .form-control-warning {
+              background-image: none!important;
+              border-right-width: thick!important;
+          }
+          .has-danger .form-control-danger {
+              background-image: none!important;
+              padding-right: 0.5rem!important;*/
+              -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #eba5a3;
+                    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #eba5a3;
+          }
+          .alert {
+              padding: .5rem .75rem;
+              margin-bottom: 0;
+          }
+  `],
   providers: [TEXTBOX_VALUE_ACCESSOR, BootstrapClassService, CommonService, ValidationService, TransformService]
 })
 export class TextboxComponent implements OnInit, ControlValueAccessor {
