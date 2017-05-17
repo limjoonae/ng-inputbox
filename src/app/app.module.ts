@@ -1,4 +1,5 @@
 import { NgModule }      from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { TooltipModule } from 'ng2-bootstrap';
 import { RouterModule } from '@angular/router';
@@ -14,6 +15,7 @@ import { TextboxDocument } from './go-textbox/doc/textbox.document';
 @NgModule({
   imports:      [ 
     BrowserModule,
+    FormsModule,
     TooltipModule.forRoot(), 
     RouterModule.forRoot([
       {path: '', component: TextboxDocument}
